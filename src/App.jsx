@@ -88,7 +88,7 @@ function App() {
   const [isHoveringCenter, setIsHoveringCenter] = useState(false)
   const [hoverProgress, setHoverProgress] = useState(0)
   const [showAnnouncement, setShowAnnouncement] = useState(false)
-  const [modelVisible, setModelVisible] = useState(true)
+  const [modelVisible, setModelVisible] = useState(false)
   
   // Config and refs for timers
   const hoverEffectEnabled = modelVisible
@@ -312,8 +312,8 @@ function App() {
           <div className="section-content">
             <h2 className="section-title">Education</h2>
             <div className="education-item">
-              <h3>Computer Systems Technology – Software Development</h3>
-              <p className="institution">Mohawk College – Hamilton, ON, CA</p>
+              <h3>Computer Systems Technology - Software Development</h3>
+              <p className="institution">Mohawk College - Hamilton, ON, CA</p>
               <p className="date">September 2022 - April 2026</p>
               <p className="description">
                 Comprehensive program focused on software development, programming languages, and modern development practices.
@@ -429,8 +429,8 @@ function App() {
                 {/* Donation Processor */}
                 <div className="experience-item">
                   <h4>Donation Processor</h4>
-                  <p className="company">Mission Thrift Store – Hamilton, ON</p>
-                  <p className="period">April 2025 – August 2025</p>
+                  <p className="company">Mission Thrift Store - Hamilton, ON</p>
+                  <p className="period">April 2025 - August 2025</p>
                   <ul>
                     <li>Handled and organized incoming donations, ensuring accurate sorting and placement</li>
                     <li>Managed high volumes of inventory in a fast-paced back-room environment</li>
@@ -442,8 +442,8 @@ function App() {
                 {/* Key Holder */}
                 <div className="experience-item">
                   <h4>Key Holder</h4>
-                  <p className="company">Lazer Mania – Hamilton, ON</p>
-                  <p className="period">February 2022 – April 2024</p>
+                  <p className="company">Lazer Mania - Hamilton, ON</p>
+                  <p className="period">February 2022 - April 2024</p>
                   <ul>
                     <li>Repaired arcade machines addressing token blockages and ticket errors</li>
                     <li>Instructed customers on laser tag rules and equipment usage, enhancing their overall experience</li>
@@ -454,8 +454,8 @@ function App() {
                 {/* Package Sorter */}
                 <div className="experience-item">
                   <h4>Package Sorter</h4>
-                  <p className="company">Canada Post – Hamilton, ON</p>
-                  <p className="period">November 2023 – January 2024</p>
+                  <p className="company">Canada Post - Hamilton, ON</p>
+                  <p className="period">November 2023 - January 2024</p>
                   <ul>
                     <li>Sorted an average of 600 mail and package items per hour, consistently meeting productivity standards</li>
                     <li>Maintained a 99% accuracy rate in sorting, ensuring reliable and error-free delivery</li>
@@ -466,8 +466,8 @@ function App() {
                 {/* Cashier */}
                 <div className="experience-item">
                   <h4>Cashier</h4>
-                  <p className="company">Food Basic Metro Inc – Hamilton, ON</p>
-                  <p className="period">December 2021 – March 2022</p>
+                  <p className="company">Food Basic Metro Inc - Hamilton, ON</p>
+                  <p className="period">December 2021 - March 2022</p>
                   <ul>
                     <li>Memorized produce item SKUs to streamline checkout processes</li>
                     <li>Provided comprehensive assistance to customers, addressing concerns and special needs</li>
@@ -478,8 +478,8 @@ function App() {
                 {/* Team Member */}
                 <div className="experience-item">
                   <h4>Team Member</h4>
-                  <p className="company">McDonald's Corporation – Hamilton, ON</p>
-                  <p className="period">November 2018 – December 2021</p>
+                  <p className="company">McDonald's Corporation - Hamilton, ON</p>
+                  <p className="period">November 2018 December - 2021</p>
                   <ul>
                     <li>Memorized menu items and processed daily sales, contributing to a $2000 daily revenue</li>
                     <li>Delivered prompt and friendly customer service while maintaining inventory and cleanliness</li>
@@ -503,11 +503,7 @@ function App() {
                 </div>
                 <div className="contact-item">
                   <h3>Location</h3>
-                  <p>Hamilton, ON, Canada</p>
-                </div>
-                <div className="contact-item">
-                  <h3>Phone</h3>
-                  <a href="tel:+12892377597">289-237-7597</a>
+                  <p>Canada</p>
                 </div>
               </div>
             </div>
