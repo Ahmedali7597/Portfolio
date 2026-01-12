@@ -1,0 +1,37 @@
+HOW TO MAKE CHANGES AND DEPLOY TO GITHUB PAGES
+===============================================
+
+Follow these steps every time you make changes:
+
+1. Edit your files
+   - Make changes to any files in src/ folder (App.jsx, App.css, etc.)
+
+2. Save your changes
+   - Press Ctrl+S to save the file in VS Code
+
+3. Test locally (optional but recommended)
+   - Open terminal
+   - Run: npm run dev
+   - Check your changes at http://localhost:5173
+
+4. Deploy to GitHub Pages
+   - Open terminal
+   - Run: npm run deploy
+   - This will automatically:
+     * Build your project
+     * Copy files to docs/ folder
+     * Commit the changes
+     * Push to GitHub
+
+5. Wait for GitHub Pages to update
+   - Wait 30 seconds to 1 minute
+
+6. Refresh your GitHub Pages site
+   - Go to: https://ahmedali7597.github.io/Portfolio/
+   - Hard refresh with Ctrl+Shift+R to clear cache
+   - You should see your changes!
+
+IMPORTANT NOTES:
+- Always use "npm run deploy" - this is the correct command for your setup
+- Never manually edit files in the docs/ folder - they get overwritten
+- If changes still don't appear, hard refresh again (Ctrl+Shift+R)
