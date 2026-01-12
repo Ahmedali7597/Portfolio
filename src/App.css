@@ -77,8 +77,9 @@
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 3rem;
 }
 
 .nav-right {
@@ -112,6 +113,13 @@
 .model-toggle:focus {
   outline: 2px solid rgba(100, 150, 255, 0.6);
   outline-offset: 2px;
+}
+
+.hint-text {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .logo {
@@ -507,6 +515,14 @@
   font-size: 1.2rem;
   color: #e0e0e0;
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-icon {
+  color: #6495ed;
+  font-size: 1.3rem;
 }
 
 .contact-item a,

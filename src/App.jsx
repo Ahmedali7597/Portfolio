@@ -4,6 +4,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { PerspectiveCamera, useGLTF } from '@react-three/drei'
+import { FaEnvelope, FaLinkedin } from 'react-icons/fa'
 import './App.css'
 
 // The 3D model path - using Vite's base URL so it works in dev and production
@@ -263,6 +264,9 @@ function App() {
             Portfolio
           </div>
           <div className="nav-right">
+            {/* Hint text pointing to the model toggle */}
+            <span className="hint-text">click for a surprise👉</span>
+            
             {/* Toggle button to show/hide the model */}
             <button 
               className="model-toggle"
@@ -273,8 +277,8 @@ function App() {
                   cleanupTimers()
                 }
               }}
-              title={modelVisible ? "Hide model and hover effect" : "Show model and hover effect"}
-              aria-label={modelVisible ? "Hide model and hover effect" : "Show model and hover effect"}
+              title={modelVisible ? "Hide The Eye" : "Show The Eye"}
+              aria-label={modelVisible ? "Hide The Eye" : "Show The Eye"}
             >
               {modelVisible ? "👁️" : "👁️‍🗨️"}
             </button>
@@ -498,8 +502,12 @@ function App() {
             <div className="contact-container">
               <div className="contact-info">
                 <div className="contact-item">
-                  <h3>Email</h3>
+                  <h3><FaEnvelope className="contact-icon" /> Email</h3>
                   <a href="mailto:Ahmedali.mohamed7597@gmail.com">Ahmedali.mohamed7597@gmail.com</a>
+                </div>
+                <div className="contact-item">
+                  <h3><FaLinkedin className="contact-icon" /> LinkedIn</h3>
+                  <a href="https://www.linkedin.com/in/ahmed-ali-229b89229/" target="_blank" rel="noopener noreferrer">Ahmed Ali</a>
                 </div>
                 <div className="contact-item">
                   <h3>Location</h3>
