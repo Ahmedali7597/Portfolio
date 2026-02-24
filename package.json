@@ -1,0 +1,34 @@
+{
+  "name": "Portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "My portfolio website with a cool interactive 3D model",
+  "author": "MrMysteryCoder",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && npm run deploy:docs",
+    "deploy:docs": "node -e \"const fs=require('fs');const path=require('path');function copyDir(src,dest){if(!fs.existsSync(dest))fs.mkdirSync(dest,{recursive:true});const entries=fs.readdirSync(src,{withFileTypes:true});for(const entry of entries){const srcPath=path.join(src,entry.name);const destPath=path.join(dest,entry.name);if(entry.isDirectory()){copyDir(srcPath,destPath);}else{fs.copyFileSync(srcPath,destPath);}}}if(fs.existsSync('docs'))fs.rmSync('docs',{recursive:true,force:true});copyDir('dist','docs');\" && git add docs && git commit -m \"Deploy to docs folder\" && git push origin main"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.88.13",
+    "@react-three/fiber": "^8.15.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "three": "^0.159.0",
+    "three-mesh-bvh": "^0.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "gh-pages": "^6.1.1",
+    "vite": "^7.2.4"
+  },
+  "overrides": {
+    "three-mesh-bvh": "^0.8.0"
+  }
+}
