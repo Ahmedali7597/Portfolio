@@ -1,0 +1,156 @@
+/* ─────────────────────────────────────────────
+   AHMED ALI · NOIR PORTFOLIO · interactions
+   ───────────────────────────────────────────── */
+(() => {
+  "use strict";
+
+  // ───── Year ─────
+  const yr = document.getElementById("yr");
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  // ───── Custom cursor ─────
+  const dot = document.getElementById("cursorDot");
+  const ring = document.getElementById("cursorRing");
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let rx = mx, ry = my;
+  if (dot && ring && window.matchMedia("(hover:hover)").matches) {
+    window.addEventListener("mousemove", (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+    });
+    const tick = () => {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+      requestAnimationFrame(tick);
+    };
+    tick();
+
+    document.querySelectorAll("a, button, [data-magnetic], [data-play]").forEach((el) => {
+      el.addEventListener("mouseenter", () => ring.classList.add("active"));
+      el.addEventListener("mouseleave", () => ring.classList.remove("active"));
+    });
+  }
+
+  // ───── Magnetic hover ─────
+  if (window.matchMedia("(hover:hover)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("[data-magnetic]").forEach((el) => {
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width / 2);
+        const y = e.clientY - (r.top + r.height / 2);
+        el.style.transform = `translate(${x * 0.18}px, ${y * 0.25}px)`;
+      });
+      el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+    });
+  }
+
+  // ───── Tilt cards ─────
+  if (window.matchMedia("(hover:hover)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".tilt").forEach((el) => {
+      const frame = el.querySelector(".case-frame") || el;
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width  - 0.5;
+        const y = (e.clientY - r.top)  / r.height - 0.5;
+        frame.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateZ(0)`;
+      });
+      el.addEventListener("mouseleave", () => { frame.style.transform = ""; });
+    });
+  }
+
+  // ───── Scroll reveal ─────
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+  // ───── Nav scroll state ─────
+  const nav = document.getElementById("nav");
+  const setNav = () => {
+    if (window.scrollY > 30) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  };
+  window.addEventListener("scroll", setNav, { passive: true });
+  setNav();
+
+  // ───── Mobile nav ─────
+  const toggle = document.getElementById("navToggle");
+  const links  = document.querySelector(".nav-links");
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      toggle.classList.toggle("open");
+      links.classList.toggle("open");
+    });
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        toggle.classList.remove("open");
+        links.classList.remove("open");
+      });
+    });
+  }
+
+  // ───── Typewriter (rotating noir taglines) ─────
+  const target = document.getElementById("typed");
+  if (target) {
+    const lines = [
+      "Software developer. Game maker. Hopeless storyteller.",
+      "Java by trade. Unity by lamplight. Mystery by choice.",
+      "Hamilton, Ontario — somewhere between code and case file.",
+      "I write small worlds. Some bloom. Some shoot back."
+    ];
+    let li = 0, ci = 0, deleting = false;
+    const tick = () => {
+      const line = lines[li];
+      if (!deleting) {
+        ci++;
+        target.textContent = line.slice(0, ci);
+        if (ci === line.length) { deleting = true; setTimeout(tick, 2400); return; }
+      } else {
+        ci--;
+        target.textContent = line.slice(0, ci);
+        if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
+      }
+      setTimeout(tick, deleting ? 22 : 48 + Math.random() * 60);
+    };
+    setTimeout(tick, 1400);
+  }
+
+  // ───── Video hover-play & manual play button ─────
+  document.querySelectorAll("[data-video]").forEach((vid) => {
+    const wrap = vid.closest(".case-frame");
+    if (!wrap) return;
+    let manual = false;
+
+    wrap.addEventListener("mouseenter", () => {
+      if (!manual) vid.play().catch(() => {});
+    });
+    wrap.addEventListener("mouseleave", () => {
+      if (!manual) { vid.pause(); vid.currentTime = 0; }
+    });
+
+    const btn = wrap.querySelector("[data-play]");
+    if (btn) {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (vid.paused) { vid.play().catch(() => {}); manual = true; btn.classList.add("is-playing"); btn.querySelector("span").textContent = "Pause"; }
+        else { vid.pause(); manual = false; btn.classList.remove("is-playing"); btn.querySelector("span").textContent = "Play demo"; }
+      });
+    }
+
+    // pause when offscreen
+    const v_io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting && !vid.paused) {
+        vid.pause();
+        if (btn) { btn.classList.remove("is-playing"); btn.querySelector("span").textContent = "Play demo"; }
+        manual = false;
+      }
+    }, { threshold: 0.1 });
+    v_io.observe(vid);
+  });
+})();

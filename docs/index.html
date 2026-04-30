@@ -1,15 +1,394 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-    <script type="module" crossorigin src="/Portfolio/assets/index-ZFwysPh9.js"></script>
-    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-DJQTzbn_.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Ahmed Ali — Developer · Game Designer · Storyteller</title>
+<meta name="description" content="The case file of Ahmed Ali — software developer, Unity game maker, and noir-leaning storyteller from Hamilton, Ontario." />
+<meta name="theme-color" content="#0b0a0f" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Special+Elite&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ═════════════════ FILM GRAIN + VIGNETTE ═════════════════ -->
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- Smoke / fog parallax layers -->
+<div class="fog-wrap" aria-hidden="true">
+  <div class="fog fog-1"></div>
+  <div class="fog fog-2"></div>
+  <div class="fog fog-3"></div>
+</div>
+
+<!-- ═════════════════ NAV ═════════════════ -->
+<nav class="nav" id="nav">
+  <a href="#top" class="brand" data-magnetic>
+    <span class="brand-mark">A.A</span>
+    <span class="brand-line"></span>
+    <span class="brand-sub">Case&nbsp;File&nbsp;№&nbsp;2026</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about" data-magnetic>The Suspect</a></li>
+    <li><a href="#games" data-magnetic>The Evidence</a></li>
+    <li><a href="#experience" data-magnetic>The Record</a></li>
+    <li><a href="#skills" data-magnetic>The Toolkit</a></li>
+    <li><a href="#contact" data-magnetic>Make Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═════════════════ HERO ═════════════════ -->
+<header class="hero" id="top">
+  <div class="hero-stamp">CONFIDENTIAL · DOSSIER 07-597</div>
+
+  <div class="hero-inner">
+    <p class="hero-eyebrow">— Filed under: <em>Developer · Storyteller · Game Maker</em></p>
+
+    <h1 class="hero-title">
+      <span class="hero-line"><span class="hero-word">Ahmed</span></span>
+      <span class="hero-line"><span class="hero-word italic">Ali</span></span>
+    </h1>
+
+    <p class="hero-typed">
+      <span id="typed"></span><span class="caret">&#9608;</span>
+    </p>
+
+    <div class="hero-meta">
+      <div class="meta-row"><span class="meta-k">Origin</span><span class="meta-v">Hamilton, Ontario</span></div>
+      <div class="meta-row"><span class="meta-k">Status</span><span class="meta-v"><span class="dot dot-green"></span>Available for hire</span></div>
+      <div class="meta-row"><span class="meta-k">Specialty</span><span class="meta-v">Java · Unity · The art of a good story</span></div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#games" data-magnetic><span>Open the Evidence</span></a>
+      <a class="btn btn-ghost" href="#contact" data-magnetic><span>Leave a tip</span></a>
+    </div>
+  </div>
+
+  <a class="hero-scroll" href="#about" aria-label="Scroll to story">
+    <span class="hero-scroll-line"></span>
+    <span class="hero-scroll-text">scroll · scroll · scroll · </span>
+  </a>
+</header>
+
+<!-- ═════════════════ MARQUEE ═════════════════ -->
+<section class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>· Mystery ·</span><span>· Code ·</span><span>· Pixels ·</span><span>· Story ·</span>
+    <span>· Mystery ·</span><span>· Code ·</span><span>· Pixels ·</span><span>· Story ·</span>
+    <span>· Mystery ·</span><span>· Code ·</span><span>· Pixels ·</span><span>· Story ·</span>
+    <span>· Mystery ·</span><span>· Code ·</span><span>· Pixels ·</span><span>· Story ·</span>
+  </div>
+</section>
+
+<!-- ═════════════════ ABOUT ═════════════════ -->
+<section class="section about" id="about">
+  <div class="section-head reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">The <em>Suspect</em></h2>
+    <p class="section-kicker">Known facts compiled by yours truly.</p>
+  </div>
+
+  <div class="about-grid">
+    <article class="dossier reveal">
+      <header class="dossier-head">
+        <span class="dossier-tag">FILE-A · BIO</span>
+        <span class="dossier-id">A.A · 07-597</span>
+      </header>
+
+      <p class="dossier-lede">
+        Hamilton, late hours. The desk lamp hums. Somewhere between a compiler error
+        and a 2&nbsp;a.m. cup of coffee, a story takes shape.
+      </p>
+
+      <p>
+        I'm a software developer finishing a <strong>Computer Systems Technology</strong>
+        diploma at <strong>Mohawk College</strong> (April&nbsp;2026). By day I write Java,
+        JavaScript, HTML, CSS, and PHP. By night I build small worlds in <strong>Unity</strong>
+        and <strong>Unreal Engine</strong>, edit film, and chase the kind of mysteries
+        you only solve by shipping.
+      </p>
+
+      <p>
+        Five+ years of customer-service trenches taught me how to keep my head when the
+        line is long and the deadline is shorter. I like clean code, tight loops,
+        moody soundtracks, and games that make you <em>feel</em> something.
+      </p>
+
+      <ul class="dossier-bullets">
+        <li><span>↳</span> Trains and ships AI chatbots — yes, really.</li>
+        <li><span>↳</span> Edits video, photos, and short films on the side.</li>
+        <li><span>↳</span> Once sorted 600 packages an hour at Canada Post (99% accuracy, no kidding).</li>
+      </ul>
+    </article>
+
+    <aside class="evidence-card reveal">
+      <div class="evidence-stamp">EXHIBIT&nbsp;A</div>
+      <div class="evidence-frame">
+        <div class="evidence-portrait" aria-hidden="true">
+          <div class="portrait-noise"></div>
+          <div class="portrait-mono">A.A</div>
+        </div>
+      </div>
+      <dl class="evidence-meta">
+        <div><dt>Alias</dt><dd>Ahmed Ali</dd></div>
+        <div><dt>Location</dt><dd>Hamilton, ON · CA</dd></div>
+        <div><dt>Education</dt><dd>Mohawk College — Software Dev., 2022–2026</dd></div>
+        <div><dt>Languages</dt><dd>Java · JS · HTML · CSS · PHP · C#</dd></div>
+        <div><dt>Engines</dt><dd>Unity · Unreal</dd></div>
+        <div><dt>License</dt><dd>Full G · Driver</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ═════════════════ GAMES ═════════════════ -->
+<section class="section games" id="games">
+  <div class="section-head reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">The <em>Evidence</em></h2>
+    <p class="section-kicker">Two cases. Two playable worlds. Roll the tape.</p>
+  </div>
+
+  <!-- ─── Case 1: Emotional Garden ─── -->
+  <article class="case reveal" id="case-eg">
+    <div class="case-media tilt">
+      <div class="case-frame">
+        <div class="case-tape">REC · 01</div>
+        <video
+          class="case-video"
+          src="assets/videos/emotional-garden.mp4"
+          poster="assets/img/emotional-garden-poster.jpg"
+          muted loop playsinline preload="metadata"
+          data-video></video>
+        <button class="case-play" data-play aria-label="Play demo">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span>Play demo</span>
+        </button>
+        <div class="case-corner tl"></div>
+        <div class="case-corner tr"></div>
+        <div class="case-corner bl"></div>
+        <div class="case-corner br"></div>
+      </div>
+    </div>
+
+    <div class="case-body">
+      <span class="case-num">CASE · 01</span>
+      <h3 class="case-title">Emotional <em>Garden</em></h3>
+      <p class="case-tagline">A quiet game about feelings that grow back.</p>
+      <p class="case-desc">
+        A meditative Unity experience where each emotion you tend becomes a seed.
+        Water it, watch it bloom, prune it gently. Built in C# with hand-tuned
+        shaders, ambient audio, and a slow, deliberate sense of time — the kind
+        of project that hides a lot of code under a soft skin.
+      </p>
+      <ul class="case-stack">
+        <li>Unity</li><li>C#</li><li>Shader Graph</li><li>2D · Atmospheric</li>
+      </ul>
+      <div class="case-cta">
+        <a class="btn btn-gold sm" href="https://github.com/Ahmedali7597/EmotionalGarden" target="_blank" rel="noopener" data-magnetic><span>View source</span></a>
+        <a class="btn btn-ghost sm" href="#contact" data-magnetic><span>Ask about it</span></a>
+      </div>
+    </div>
+  </article>
+
+  <!-- ─── Case 2: Cosmic Perfection ─── -->
+  <article class="case reverse reveal" id="case-cp">
+    <div class="case-media tilt">
+      <div class="case-frame">
+        <div class="case-tape red">REC · 02</div>
+        <video
+          class="case-video"
+          src="assets/videos/cosmic-perfection.mp4"
+          poster="assets/img/cosmic-perfection-poster.jpg"
+          muted loop playsinline preload="metadata"
+          data-video></video>
+        <button class="case-play" data-play aria-label="Play demo">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span>Play demo</span>
+        </button>
+        <div class="case-corner tl"></div>
+        <div class="case-corner tr"></div>
+        <div class="case-corner bl"></div>
+        <div class="case-corner br"></div>
+      </div>
+    </div>
+
+    <div class="case-body">
+      <span class="case-num">CASE · 02</span>
+      <h3 class="case-title">Cosmic <em>Perfection</em></h3>
+      <p class="case-tagline">A bullet-hell sermon. Discipline through chaos.</p>
+      <p class="case-desc">
+        Hundreds of projectiles. One small ship. A demanding bullet-hell built in
+        Unity with tight collision tuning, juicy feedback, and patterns that ask
+        you to learn a rhythm before you can survive it. Made for the players who
+        believe death is just a draft.
+      </p>
+      <ul class="case-stack">
+        <li>Unity</li><li>C#</li><li>Bullet&nbsp;Hell</li><li>SFX&nbsp;&amp;&nbsp;VFX</li>
+      </ul>
+      <div class="case-cta">
+        <a class="btn btn-gold sm" href="#contact" data-magnetic><span>Request build</span></a>
+        <a class="btn btn-ghost sm" href="#case-eg" data-magnetic><span>Previous case</span></a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ═════════════════ EXPERIENCE TIMELINE ═════════════════ -->
+<section class="section experience" id="experience">
+  <div class="section-head reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">The <em>Record</em></h2>
+    <p class="section-kicker">Where I've been clocking hours since 2018.</p>
+  </div>
+
+  <ol class="timeline">
+    <li class="t-item reveal">
+      <span class="t-dot"></span>
+      <div class="t-card">
+        <div class="t-when">Apr 2025 — Aug 2025</div>
+        <h4 class="t-role">Donation Processor</h4>
+        <div class="t-org">Mission Thrift Store · Hamilton, ON</div>
+        <p>Sorted incoming donations at volume. Kept a chaotic back-room moving and a tight team in sync.</p>
+      </div>
+    </li>
+
+    <li class="t-item reveal">
+      <span class="t-dot"></span>
+      <div class="t-card">
+        <div class="t-when">Feb 2022 — Apr 2024</div>
+        <h4 class="t-role">Key Holder</h4>
+        <div class="t-org">Lazer Mania · Hamilton, ON</div>
+        <p>Repaired arcade machines, ran laser-tag sessions, hosted birthdays. Equal parts technician, host, and translator of "the machine ate my tokens."</p>
+      </div>
+    </li>
+
+    <li class="t-item reveal">
+      <span class="t-dot"></span>
+      <div class="t-card">
+        <div class="t-when">Nov 2023 — Jan 2024</div>
+        <h4 class="t-role">Package Sorter</h4>
+        <div class="t-org">Canada Post · Hamilton, ON</div>
+        <p>~600 items / hour. 99% accuracy. 5,000+ items moved with the team daily. A masterclass in throughput.</p>
+      </div>
+    </li>
+
+    <li class="t-item reveal">
+      <span class="t-dot"></span>
+      <div class="t-card">
+        <div class="t-when">Dec 2021 — Mar 2022</div>
+        <h4 class="t-role">Cashier</h4>
+        <div class="t-org">Food Basics (Metro Inc) · Hamilton, ON</div>
+        <p>Memorized produce SKUs, cut checkout time by 15%, lifted satisfaction scores by 10%.</p>
+      </div>
+    </li>
+
+    <li class="t-item reveal">
+      <span class="t-dot"></span>
+      <div class="t-card">
+        <div class="t-when">Nov 2018 — Dec 2021</div>
+        <h4 class="t-role">Team Member</h4>
+        <div class="t-org">McDonald's · Hamilton, ON</div>
+        <p>The original training ground. Speed, accuracy, and the calm a $2,000-a-day rush teaches you.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ═════════════════ SKILLS ═════════════════ -->
+<section class="section skills" id="skills">
+  <div class="section-head reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">The <em>Toolkit</em></h2>
+    <p class="section-kicker">What's in the trench-coat pocket.</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-col reveal">
+      <h4>Code</h4>
+      <ul class="chips">
+        <li>Java <span>★ specialty</span></li>
+        <li>JavaScript</li><li>HTML</li><li>CSS</li>
+        <li>PHP</li><li>C#</li><li>Python</li>
+      </ul>
+    </div>
+    <div class="skill-col reveal">
+      <h4>Game &amp; Media</h4>
+      <ul class="chips">
+        <li>Unity</li><li>Unreal Engine</li>
+        <li>Shader Graph</li><li>2D / Atmospheric</li>
+        <li>Video Editing</li><li>Photo Editing</li>
+        <li>Short-Film Production</li>
+      </ul>
+    </div>
+    <div class="skill-col reveal">
+      <h4>AI &amp; Other</h4>
+      <ul class="chips">
+        <li>Chatbot Training</li><li>AI Integrations</li>
+        <li>Workflow Optimization</li><li>Team Leadership</li>
+        <li>Customer Empathy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ CONTACT ═════════════════ -->
+<section class="section contact" id="contact">
+  <div class="section-head reveal">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Make <em>Contact</em></h2>
+    <p class="section-kicker">Drop a tip. The desk lamp is on.</p>
+  </div>
+
+  <div class="contact-card reveal">
+    <div class="contact-row">
+      <span class="contact-k">Email</span>
+      <a class="contact-v" href="mailto:Ahmedali.mohamed7597@gmail.com" data-magnetic>Ahmedali.mohamed7597@gmail.com</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-k">Phone</span>
+      <a class="contact-v" href="tel:+12892377597" data-magnetic>289 · 237 · 7597</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-k">GitHub</span>
+      <a class="contact-v" href="https://github.com/Ahmedali7597" target="_blank" rel="noopener" data-magnetic>github.com/Ahmedali7597</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-k">Location</span>
+      <span class="contact-v">Hamilton · Ontario · Canada</span>
+    </div>
+
+    <a class="btn btn-gold lg" href="mailto:Ahmedali.mohamed7597@gmail.com?subject=Found%20your%20portfolio" data-magnetic>
+      <span>Send a message</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═════════════════ FOOTER ═════════════════ -->
+<footer class="foot">
+  <div class="foot-row">
+    <span>© <span id="yr"></span> · A. Ali · Hamilton</span>
+    <span class="foot-sep">·</span>
+    <span>Crafted in the small hours.</span>
+    <span class="foot-sep">·</span>
+    <span>End of file.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
