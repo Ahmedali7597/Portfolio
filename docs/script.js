@@ -4,6 +4,77 @@
 (() => {
   "use strict";
 
+  // ───── Loader ─────
+  document.body.classList.add("is-loading");
+  const loader = document.getElementById("loader");
+  const loaderType = document.getElementById("loaderType");
+  const loaderBar  = document.getElementById("loaderBar");
+  const loaderPct  = document.getElementById("loaderPct");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const loaderPhrases = [
+    "Decoding fingerprints",
+    "Cross-referencing aliases",
+    "Loading the case file",
+    "Lighting the desk lamp"
+  ];
+  if (loaderType && !reduceMotion) {
+    let pi = 0, ci = 0, deleting = false;
+    const tick = () => {
+      if (!loader || loader.classList.contains("is-done")) return;
+      const phrase = loaderPhrases[pi];
+      if (!deleting) {
+        ci++;
+        loaderType.textContent = phrase.slice(0, ci);
+        if (ci === phrase.length) { deleting = true; setTimeout(tick, 700); return; }
+      } else {
+        ci--;
+        loaderType.textContent = phrase.slice(0, ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % loaderPhrases.length; }
+      }
+      setTimeout(tick, deleting ? 22 : 38 + Math.random() * 50);
+    };
+    setTimeout(tick, 250);
+  } else if (loaderType) {
+    loaderType.textContent = "Opening the case file";
+  }
+
+  const dismissLoader = () => {
+    if (!loader) return;
+    if (loaderBar) loaderBar.style.width = "100%";
+    if (loaderPct) loaderPct.textContent = "100%";
+    setTimeout(() => {
+      loader.classList.add("is-done");
+      document.body.classList.remove("is-loading");
+      setTimeout(() => { loader && loader.remove(); }, 900);
+    }, 360);
+  };
+
+  // Animate progress bar with subtle stutters, then resolve when ready
+  if (loaderBar && loaderPct && !reduceMotion) {
+    let p = 0;
+    const step = () => {
+      if (!loader || loader.classList.contains("is-done")) return;
+      const target = Math.min(p + (Math.random() * 9 + 2), 92);
+      p = target;
+      loaderBar.style.width = p.toFixed(0) + "%";
+      loaderPct.textContent = (p < 10 ? "0" : "") + p.toFixed(0) + "%";
+      if (p < 92) setTimeout(step, 110 + Math.random() * 220);
+    };
+    step();
+  }
+
+  const minLoaderTime = reduceMotion ? 300 : 1700;
+  const startedAt = performance.now();
+  const resolveLoader = () => {
+    const elapsed = performance.now() - startedAt;
+    setTimeout(dismissLoader, Math.max(0, minLoaderTime - elapsed));
+  };
+  if (document.readyState === "complete") resolveLoader();
+  else window.addEventListener("load", resolveLoader);
+  // safety net
+  setTimeout(() => { if (loader && !loader.classList.contains("is-done")) dismissLoader(); }, 6000);
+
   // ───── Year ─────
   const yr = document.getElementById("yr");
   if (yr) yr.textContent = new Date().getFullYear();
