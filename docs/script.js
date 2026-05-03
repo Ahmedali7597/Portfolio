@@ -147,7 +147,7 @@
   if (target) {
     const lines = [
       "Software developer. Game maker. Storyteller.",
-      "Artist by trade. Dev by profession. Mysterious by choice.",
+      "Full-stack web. Game dev. Always building something.",
       "Hamilton, Ontario. Somewhere between code and a case file.",
       "Late grind. Sharp mind. Every line by design."
     ];
