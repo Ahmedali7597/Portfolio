@@ -79,30 +79,6 @@
   const yr = document.getElementById("yr");
   if (yr) yr.textContent = new Date().getFullYear();
 
-  // ───── Custom cursor ─────
-  const dot = document.getElementById("cursorDot");
-  const ring = document.getElementById("cursorRing");
-  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-  let rx = mx, ry = my;
-  if (dot && ring && window.matchMedia("(hover:hover)").matches) {
-    window.addEventListener("mousemove", (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
-    });
-    const tick = () => {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
-      requestAnimationFrame(tick);
-    };
-    tick();
-
-    document.querySelectorAll("a, button, [data-magnetic], [data-play]").forEach((el) => {
-      el.addEventListener("mouseenter", () => ring.classList.add("active"));
-      el.addEventListener("mouseleave", () => ring.classList.remove("active"));
-    });
-  }
-
   // ───── Magnetic hover ─────
   if (window.matchMedia("(hover:hover)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.querySelectorAll("[data-magnetic]").forEach((el) => {
