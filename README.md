@@ -1,28 +1,41 @@
 # Ahmed Ali — Portfolio
 
-Noir-inspired portfolio site. Dark, atmospheric, no-framework.
+Noir-themed portfolio. Static HTML/CSS/JS, no build step.
 
-Live: https://ahmedali7597.github.io/Portfolio/
+**Live:** https://ahmedali7597.github.io/Portfolio/
 
 ## Stack
-- Vanilla HTML / CSS / JavaScript — no build step, no dependencies.
-- Hosted on GitHub Pages (`docs/` folder on `main` branch).
+
+| Layer | Tech |
+|-------|------|
+| Markup | Semantic HTML5 |
+| Style | Vanilla CSS (custom properties, scroll-driven animations) |
+| Behaviour | Vanilla JS (IntersectionObserver, typewriter, video hover-play) |
+| Fonts | Cormorant Garamond · Special Elite · Inter via Google Fonts |
+| Hosting | GitHub Pages — `docs/` folder on `main` |
 
 ## Local preview
 
 ```bash
 cd docs
-python3 -m http.server 8080   # or: npx serve .
+npx serve .          # or: python3 -m http.server 8080
 ```
 
-Then visit http://localhost:8080.
+Open http://localhost:3000 (serve) or http://localhost:8080 (python).
 
 ## Making changes
 
-Edit files directly in `docs/`:
-- `docs/index.html` — markup
-- `docs/styles.css` — all styles
-- `docs/script.js` — interactions
-- `docs/assets/` — images and videos
+All source files live in `docs/`:
 
-Commit and push to `main` — GitHub Pages updates within ~60 seconds.
+```
+docs/
+├── index.html        ← all markup
+├── styles.css        ← all styles
+├── script.js         ← all interactions
+└── assets/
+    ├── img/          ← profile photo, game posters
+    └── videos/       ← game demo clips
+```
+
+Edit, commit, push to `main`. GitHub Pages updates within ~60 seconds.  
+Hard-refresh the live URL (`Ctrl+Shift+R`) to clear cached assets.

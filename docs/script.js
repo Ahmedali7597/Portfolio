@@ -148,7 +148,7 @@
     const lines = [
       "Software developer. Game maker. Storyteller.",
       "Artist by trade. Dev by profession. Mysterious by choice.",
-      "Hamilton, Ontario — somewhere between code and a case file.",
+      "Hamilton, Ontario. Somewhere between code and a case file.",
       "Late grind. Sharp mind. Every line by design."
     ];
     let li = 0, ci = 0, deleting = false;
