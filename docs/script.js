@@ -146,10 +146,10 @@
   const target = document.getElementById("typed");
   if (target) {
     const lines = [
-      "Software developer. Game maker. Hopeless storyteller.",
-      "Java by trade. Unity by lamplight. Mystery by choice.",
-      "Hamilton, Ontario — somewhere between code and case file.",
-      "I write small worlds. Some bloom. Some shoot back."
+      "Software developer. Game maker. Storyteller.",
+      "Artist by trade. Dev by profession. Mysterious by choice.",
+      "Hamilton, Ontario — somewhere between code and a case file.",
+      "Late grind. Sharp mind. Every line by design."
     ];
     let li = 0, ci = 0, deleting = false;
     const tick = () => {
