@@ -1,30 +1,40 @@
 # Design notes
 
-An editorial portfolio with a detective noir identity. The supplied reference
-files are design references; the current brief calls for expressive motion.
+Ahmed's portfolio takes the form of a 1950s newspaper with a detective noir mood
+and modern, responsive motion. The supplied files are references, not instructions.
 
 ## Reference lock
 
-The primary reference is [Henry Codes](https://henry.codes/): oversized condensed
-type, contrasting serif text, full-width paper/ink sections, moving type and a
-numbered project index. Preserve that scale and contrast, without copying its
-headlines, artwork, source code or commercial fonts.
+[Henry Codes](https://henry.codes/) supplies the scale, strong type contrast,
+full-width paper/ink sections and moving editorial type. [Miranda](https://www.niccolomiranda.com/)
+informs the fine rules, columns and newspaper spacing. The headlines, personal
+story, case files and animated portrait are specific to Ahmed.
 
-Borrow only the tight newspaper rules and editorial spacing from
-[Miranda](https://www.niccolomiranda.com/). Case numbering, the portrait and
-moving venetian-blind shadows belong to Ahmed's detective noir direction.
+Refero's bundled craft and motion guidance informed the implementation. Live
+Refero search was unavailable because the connected account has no subscription.
 
-| Decision                                            | Source                        | Role                                                         |
-| --------------------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
-| Paper `#fafafa` and ink `#2a2722`                   | Supplied Henry tokens         | Main canvas, text and full-width inversions                  |
-| Noir `#0a090d`                                      | Existing portfolio            | Portrait backdrop and footer                                 |
-| Anton / Cormorant Garamond / Inter                  | Henry's three type roles      | Condensed mastheads / editorial titles / readable body text  |
-| Small case numbers and fine rules                   | User's noir brief; Miranda    | Organize real projects as case files                         |
-| Portrait and original game recordings               | Existing portfolio            | Real personal and project evidence; keep recordings in color |
-| Headline entrances, scrolling type, opening cases   | Henry; Refero motion guidance | Establish hierarchy and show interaction feedback            |
-| Motion toggle and reduced-motion support            | Refero craft guidance         | Keep all content usable without animation                    |
-| Native details, video controls and normal scrolling | Simple-code requirement       | Keyboard/touch support without a framework                   |
+| Choice                                                                                                | Purpose                                                                                 |
+| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Warm paper `#f0ece3`, ink `#2a2722`, monochrome photographs                                           | A printed newspaper rather than a generic portfolio grid                                |
+| Cormorant Garamond masthead and stories; Anton section headlines; Inter body; Courier labels          | Traditional editorial character with clear modern hierarchy                             |
+| Double rules, bylines, drop cap, project columns and a small classified notice                        | Newspaper details that carry actual portfolio content                                   |
+| Charcoal paper `#171816` and cream text `#e9e4d9` in dark mode                                        | Preserve the same print identity after dark                                             |
+| “Extra! Extra! Read all about it!” and a two-page newspaper unfolding                                 | A short opening sequence built from HTML and CSS                                        |
+| Staggered entrances, moving newswire, rolling case titles, smooth case expansion and portrait shadows | Visible motion at arrival, while scrolling and during interaction                       |
+| Seven story sentences beginning MYSTERY                                                               | A personal clue about coffee, games, true crime, puzzles, Magic and visual storytelling |
+| Individual initial hover, keyboard focus and tap states                                               | Each letter can be discovered independently                                             |
+| Emotional Garden voice credit directly below the recording                                            | Clearly credit Ahmed's project partner                                                  |
 
-No build step, animation library, scroll hijacking or custom cursor. Motion uses
-CSS and the Web Animations API; content remains readable if JavaScript fails.
-Keep the existing project links, contact destinations and incoming section IDs.
+The intro closes automatically after 3.4 seconds, supports Skip and Escape, and
+can be replayed from the footer. It is skipped when reduced motion is preferred.
+A visible motion control pauses the continuous effects. Dark mode follows the
+system until the visitor chooses a theme, then remembers that choice locally.
+
+## Implementation
+
+Plain HTML, CSS and JavaScript; no framework, animation library or build step.
+CSS handles print styling and small interactions. IntersectionObserver and the
+Web Animations API handle entrances without making content depend on JavaScript.
+Native details, video controls and dialog keep the behavior readable and accessible.
+Case expansion uses intrinsic-size transitions where supported, with native
+opening as a fallback. Normal scrolling, existing links and section IDs are retained.
