@@ -9,7 +9,7 @@
       content="Ahmed Ali's developer dossier. Full-stack applications, Unity games and the stories behind the code. Based in Hamilton, Ontario."
     />
     <meta name="author" content="Ahmed Ali" />
-    <meta name="theme-color" content="#fafafa" />
+    <meta name="theme-color" content="#f0ece3" />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -36,13 +36,59 @@
       rel="stylesheet"
     />
     <link rel="preload" href="assets/img/profile-noir.jpg" as="image" />
-    <link rel="stylesheet" href="variables.css" />
-    <link rel="stylesheet" href="theme.css" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <script>
+      // Apply a saved theme before the styles paint the page.
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="variables.css?v=20260909-press2" />
+    <link rel="stylesheet" href="theme.css?v=20260909-press2" />
+    <link rel="stylesheet" href="styles.css?v=20260909-press3" />
+    <script src="script.js?v=20260909-press2" defer></script>
   </head>
   <body class="paper" id="top" data-motion="off">
     <a class="skip-link" href="#main">Skip to content</a>
+
+    <dialog class="intro" aria-labelledby="intro-title">
+      <button class="intro-skip label" type="button" autofocus>
+        Skip intro ↗
+      </button>
+      <div class="intro-announcement">
+        <p class="label">A fresh edition has arrived</p>
+        <h2 id="intro-title">Extra! Extra!</h2>
+        <p>Read all about it!</p>
+      </div>
+      <div class="intro-spread" aria-hidden="true">
+        <div class="intro-page intro-page-left">
+          <p class="label">The developer’s dossier / Vol. 01</p>
+          <p class="intro-name">Ahmed Ali</p>
+          <p class="intro-headline">A curious mind.<br />A new case.</p>
+          <p class="intro-print">
+            Software, games and the stories behind the code. An independent
+            portfolio from Hamilton, Ontario.
+          </p>
+          <p class="label intro-folio">The personal edition / 01</p>
+        </div>
+        <div class="intro-page intro-page-right">
+          <p class="label">From the desk of Ahmed Ali</p>
+          <img
+            src="assets/img/profile-noir.jpg"
+            alt=""
+            width="600"
+            height="600"
+          />
+          <p class="intro-caption">Developer. Detail detective.</p>
+          <p class="label intro-folio">Follow the evidence / 02</p>
+        </div>
+      </div>
+      <p class="intro-bottom label">
+        Software / Games / A story worth following
+      </p>
+    </dialog>
 
     <header class="site-header paper">
       <nav class="navigation page" aria-label="Main navigation">
@@ -50,6 +96,14 @@
           >A.A <span>/ The developer’s dossier</span></a
         >
         <div class="nav-controls">
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-pressed="false"
+            hidden
+          >
+            Dark mode
+          </button>
           <button
             class="motion-toggle"
             type="button"
@@ -80,43 +134,54 @@
     <main id="main" tabindex="-1">
       <section class="hero page" aria-labelledby="page-title">
         <div class="edition-line label">
-          <span>Independent portfolio / File № 07–597</span>
-          <span>Hamilton, Ontario · 2026</span>
+          <span>Vol. 01 / File № 07–597</span>
+          <span class="edition-name">The developer’s dossier</span>
+          <span>Hamilton, Ontario / Portfolio edition</span>
         </div>
         <h1 class="masthead" id="page-title">
           <span data-reveal="headline">Ahmed</span>
-          <span data-reveal="headline">Ali</span>
+          <span data-reveal="headline" data-delay="140">Ali</span>
         </h1>
+        <div class="masthead-deck label">
+          <span>Software, games &amp; the stories behind them</span>
+          <span>Independent developer · In pursuit of the details</span>
+        </div>
+        <div class="newswire ink" aria-hidden="true">
+          <span class="newswire-label">On the record</span>
+          <div class="newswire-window">
+            <div class="newswire-track">
+              <span
+                >Full-stack development &nbsp; / &nbsp; Java &amp; JavaScript
+                &nbsp; / &nbsp; Unity &amp; Unreal &nbsp; / &nbsp; Open to
+                opportunities &nbsp; / &nbsp;</span
+              >
+              <span
+                >Full-stack development &nbsp; / &nbsp; Java &amp; JavaScript
+                &nbsp; / &nbsp; Unity &amp; Unreal &nbsp; / &nbsp; Open to
+                opportunities &nbsp; / &nbsp;</span
+              >
+            </div>
+          </div>
+        </div>
 
         <div class="hero-grid">
           <div class="hero-copy">
+            <p class="story-kicker label">
+              The lead story / Software &amp; game development
+            </p>
             <h2 data-reveal>Developer.<br /><em>Detail detective.</em></h2>
+            <p class="byline">By Ahmed Ali <span>— Hamilton, Ontario</span></p>
             <div class="hero-description">
-              <p>
+              <p class="drop-cap">
                 I build full-stack applications and games. I like getting to the
                 bottom of a problem—and making something worth exploring.
               </p>
-              <p class="label availability">
-                Available for hire<br />Junior software developer
-              </p>
-            </div>
-            <div class="hero-index">
-              <p class="label">Follow the evidence</p>
-              <a href="#case-tt"
-                ><span>03 / Tap to Trade</span
-                ><span class="index-type">Full-stack</span
-                ><span aria-hidden="true">↗</span></a
-              >
-              <a href="#case-eg"
-                ><span>01 / Emotional Garden</span
-                ><span class="index-type">Unity</span
-                ><span aria-hidden="true">↗</span></a
-              >
-              <a href="#case-cp"
-                ><span>02 / Cosmic Perfection</span
-                ><span class="index-type">Unity</span
-                ><span aria-hidden="true">↗</span></a
-              >
+              <div class="classified">
+                <p class="label">The opportunity column</p>
+                <p>Have a good <br /><em>case for me?</em></p>
+                <a href="#contact">Available for hire ↗</a>
+                <span class="label">Junior software developer</span>
+              </div>
             </div>
           </div>
           <figure class="portrait" data-reveal>
@@ -134,13 +199,70 @@
               >
             </div>
             <figcaption class="label">
-              <span>Exhibit A / The developer</span><span>On the case ↓</span>
+              <span>Fig. 01 / The developer</span><span>Hamilton dispatch</span>
             </figcaption>
           </figure>
         </div>
+
+        <div class="edition-stories" aria-label="Inside this edition">
+          <a
+            class="news-preview news-preview-text"
+            href="#case-tt"
+            data-reveal
+            data-delay="0"
+          >
+            <span class="label">03 / Full-stack / The capstone</span>
+            <h3>A better way <br />to find the next trade.</h3>
+            <p>
+              Tap to Trade connects local Magic: The Gathering players through
+              inventories, offers and a shared collection.
+            </p>
+            <span class="preview-link label"
+              >Read the case file <span aria-hidden="true">↗</span></span
+            >
+          </a>
+          <a class="news-preview" href="#case-eg" data-reveal data-delay="100">
+            <div class="news-photo">
+              <img
+                src="assets/img/emotional-garden-poster.jpg"
+                alt="Emotional Garden gameplay"
+                width="1280"
+                height="642"
+                loading="lazy"
+              />
+            </div>
+            <span class="label">01 / Games / Emotional Garden</span>
+            <h3>Where feelings <br />take root.</h3>
+            <p>A quieter kind of game, built in Unity.</p>
+            <span class="preview-link label"
+              >Watch the recording <span aria-hidden="true">↗</span></span
+            >
+          </a>
+          <a class="news-preview" href="#case-cp" data-reveal data-delay="200">
+            <div class="news-photo">
+              <img
+                src="assets/img/cosmic-perfection-poster.jpg"
+                alt="Cosmic Perfection gameplay"
+                width="1920"
+                height="1080"
+                loading="lazy"
+              />
+            </div>
+            <span class="label">02 / Games / Cosmic Perfection</span>
+            <h3>Order in <br />a field of chaos.</h3>
+            <p>One small ship. A test of timing and nerve.</p>
+            <span class="preview-link label"
+              >Watch the recording <span aria-hidden="true">↗</span></span
+            >
+          </a>
+        </div>
         <div class="hero-foot label">
-          <span>Software development · Game design · Visual storytelling</span
-          ><a href="#games">Scroll to investigate ↓</a>
+          <span
+            >Inside: selected work / personal notes / tools of the trade</span
+          ><a href="#games"
+            >Follow the evidence
+            <span class="scroll-cue" aria-hidden="true">↓</span></a
+          >
         </div>
       </section>
 
@@ -162,7 +284,7 @@
           <div class="section-meta label">
             <span>01 / The evidence</span><span>Three selected projects</span>
           </div>
-          <h2 class="display-heading" id="work-title" data-reveal>
+          <h2 class="display-heading" id="work-title" data-reveal="headline">
             Case files
           </h2>
           <p class="work-intro">
@@ -170,9 +292,14 @@
           </p>
 
           <details class="case" id="case-tt" open>
-            <summary>
+            <summary data-reveal="case">
               <span class="case-number label">03</span>
-              <h3>Tap to Trade</h3>
+              <h3>
+                <span class="case-title-track"
+                  ><span>Tap to Trade</span
+                  ><span aria-hidden="true">Tap to Trade</span></span
+                >
+              </h3>
               <span class="case-category label">Full-stack / Capstone</span>
               <span class="case-symbol" aria-hidden="true">+</span>
             </summary>
@@ -244,9 +371,14 @@
           </details>
 
           <details class="case" id="case-eg">
-            <summary>
+            <summary data-reveal="case">
               <span class="case-number label">01</span>
-              <h3>Emotional Garden</h3>
+              <h3>
+                <span class="case-title-track"
+                  ><span>Emotional Garden</span
+                  ><span aria-hidden="true">Emotional Garden</span></span
+                >
+              </h3>
               <span class="case-category label">Unity / C#</span>
               <span class="case-symbol" aria-hidden="true">+</span>
             </summary>
@@ -322,9 +454,14 @@
           </details>
 
           <details class="case" id="case-cp">
-            <summary>
+            <summary data-reveal="case">
               <span class="case-number label">02</span>
-              <h3>Cosmic Perfection</h3>
+              <h3>
+                <span class="case-title-track"
+                  ><span>Cosmic Perfection</span
+                  ><span aria-hidden="true">Cosmic Perfection</span></span
+                >
+              </h3>
               <span class="case-category label">Unity / C#</span>
               <span class="case-symbol" aria-hidden="true">+</span>
             </summary>
@@ -403,28 +540,98 @@
         </div>
         <div class="profile-grid page">
           <figure class="personal-note" data-reveal>
-            <figcaption class="label">02 / Off the clock</figcaption>
+            <figcaption class="label">
+              02 / Off the clock / A short story
+            </figcaption>
+            <h3 class="personal-headline">
+              One more lead.<br /><em>One more coffee.</em>
+            </h3>
+            <p class="byline">From the personal pages of Ahmed Ali</p>
             <blockquote class="mystery-quote" id="mystery-quote">
-              <p>Magic: The Gathering at the table.</p>
-              <p>Yes, there’s always room for coffee.</p>
-              <p>Solving puzzles, one clue at a time.</p>
-              <p>True crime, with a theory of my own.</p>
-              <p>Escaping into a good video game.</p>
-              <p>Reworking a photo or a short film.</p>
-              <p>Yet another curiosity to follow.</p>
+              <p>
+                <button
+                  class="story-word"
+                  type="button"
+                  aria-label="Highlight M in Midnight"
+                  aria-pressed="false"
+                >
+                  <span class="story-initial">M</span>idnight
+                </button>
+                finds me with a coffee and a puzzle missing its last piece.
+              </p>
+              <p>
+                <button
+                  class="story-word"
+                  type="button"
+                  aria-label="Highlight Y in You"
+                  aria-pressed="false"
+                >
+                  <span class="story-initial">Y</span>ou
+                </button>
+                could call it curiosity; I call it a good evening.
+              </p>
+              <p>
+                <button
+                  class="story-word"
+                  type="button"
+                  aria-label="Highlight S in Some"
+                  aria-pressed="false"
+                >
+                  <span class="story-initial">S</span>ome
+                </button>
+                nights, I follow true-crime clues; others, I disappear into a
+                video game.
+              </p>
+              <p>
+                <button
+                  class="story-word"
+                  type="button"
+                  aria-label="Highlight T in Then"
+                  aria-pressed="false"
+                >
+                  <span class="story-initial">T</span>hen
+                </button>
+                it’s a new hand of Magic: The Gathering, and a different mystery
+                to solve.
+              </p>
+              <p>
+                <button
+                  class="story-word"
+                  type="button"
+                  aria-label="Highlight E in Every"
+                  aria-pressed="false"
+                >
+                  <span class="story-initial">E</span>very
+                </button>
+                card, clue, and plot twist keeps me wondering what comes next.
+              </p>
+              <p>
+                <button
+                  class="story-word"
+                  type="button"
+                  aria-label="Highlight R in Reaching"
+                  aria-pressed="false"
+                >
+                  <span class="story-initial">R</span>eaching
+                </button>
+                for a camera, I turn those little stories into photos and films.
+              </p>
+              <p>
+                <button
+                  class="story-word"
+                  type="button"
+                  aria-label="Highlight Y in Yet"
+                  aria-pressed="false"
+                >
+                  <span class="story-initial">Y</span>et
+                </button>
+                there’s always another rabbit hole, and time for one more
+                coffee.
+              </p>
             </blockquote>
-            <div class="clue-footer">
-              <p class="label">There’s a clue in the first letters.</p>
-              <button
-                class="clue-toggle"
-                type="button"
-                aria-pressed="false"
-                aria-controls="mystery-quote"
-                hidden
-              >
-                Reveal initials +
-              </button>
-            </div>
+            <p class="clue-hint label">
+              Hover or tap an opening letter. Follow your curiosity.
+            </p>
           </figure>
           <div class="profile-copy" data-reveal>
             <p>
@@ -508,7 +715,7 @@
           <div class="section-meta label">
             <span>04 / Make contact</span><span>Open for opportunities</span>
           </div>
-          <h2 class="display-heading" id="contact-title" data-reveal>
+          <h2 class="display-heading" id="contact-title" data-reveal="headline">
             Got a lead?
           </h2>
           <div class="contact-grid">
@@ -572,6 +779,9 @@
       <div class="page footer-row label">
         <p>© <span id="yr">2026</span> Ahmed Ali</p>
         <span>Designed &amp; developed by Ahmed Ali</span>
+        <button class="intro-replay label" type="button" hidden>
+          Replay the opening ↗
+        </button>
         <a href="#top">End of file / Back to top ↑</a>
       </div>
     </footer>

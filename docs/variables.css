@@ -1,12 +1,17 @@
 /* Shared colors, typography and motion. */
 :root {
-  --color-paper: #fafafa;
+  --color-paper: #f0ece3;
   --color-headline-ink: #2a2722;
   --color-noir: #0a090d;
   --color-ash: #666666;
   --color-pebble: #b3b3b3;
   --color-midstone: #9f9f9f;
   --color-sepia: #3e3b36;
+  --color-night-paper: #171816;
+  --color-night-panel: #252622;
+  --color-night-ink: #e9e4d9;
+  --color-night-muted: #b3b0a6;
+  --color-night-rule: #62635c;
 
   --font-masthead: "Anton", Impact, "Arial Narrow", sans-serif;
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -19,8 +24,8 @@
 
   --duration-fast: 140ms;
   --duration-panel: 240ms;
-  --duration-reveal: 650ms;
-  --duration-marquee: 32s;
-  --duration-shadows: 9s;
+  --duration-reveal: 850ms;
+  --duration-marquee: 24s;
+  --duration-shadows: 6s;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }

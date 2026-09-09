@@ -25,3 +25,37 @@
 .paper {
   background-image: url("assets/img/paper-grain.svg");
 }
+
+/* Dark newsprint keeps the same ink, rule and typography roles. */
+:root[data-theme="dark"],
+:root[data-theme="dark"] .paper {
+  color-scheme: dark;
+  --surface: var(--color-night-paper);
+  --text: var(--color-night-ink);
+  --muted: var(--color-night-muted);
+  --rule: var(--color-night-rule);
+}
+:root[data-theme="dark"] .ink {
+  --surface: var(--color-night-panel);
+  --text: var(--color-night-ink);
+  --muted: var(--color-night-muted);
+  --rule: var(--color-night-rule);
+}
+
+/* The system preference works before JavaScript and without local storage. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]),
+  :root:not([data-theme="light"]) .paper {
+    color-scheme: dark;
+    --surface: var(--color-night-paper);
+    --text: var(--color-night-ink);
+    --muted: var(--color-night-muted);
+    --rule: var(--color-night-rule);
+  }
+  :root:not([data-theme="light"]) .ink {
+    --surface: var(--color-night-panel);
+    --text: var(--color-night-ink);
+    --muted: var(--color-night-muted);
+    --rule: var(--color-night-rule);
+  }
+}
