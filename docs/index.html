@@ -6,11 +6,10 @@
     <title>Ahmed Ali | Software Developer &amp; Game Maker</title>
     <meta
       name="description"
-      content="The developer's dossier of Ahmed Ali. Full-stack applications, Unity games and selected software development work from Hamilton, Ontario."
+      content="Ahmed Ali's developer dossier. Full-stack applications, Unity games and the stories behind the code. Based in Hamilton, Ontario."
     />
     <meta name="author" content="Ahmed Ali" />
-    <meta name="theme-color" content="#0a090d" />
-    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#fafafa" />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -33,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap"
       rel="stylesheet"
     />
     <link rel="preload" href="assets/img/profile-noir.jpg" as="image" />
@@ -42,257 +41,216 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
-  <body class="ink" id="top">
+  <body class="paper" id="top" data-motion="off">
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header ink">
-      <nav class="navigation container" aria-label="Main navigation">
-        <a class="brand" href="#top" aria-label="Ahmed Ali, back to top">
-          <span class="brand-mark" aria-hidden="true">A.A</span>
-          <span class="brand-label">The developer’s dossier</span>
-        </a>
-        <button
-          class="menu-toggle"
-          id="navToggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="navLinks"
-          hidden
+    <header class="site-header paper">
+      <nav class="navigation page" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Ahmed Ali, back to top"
+          >A.A <span>/ The developer’s dossier</span></a
         >
-          <span data-menu-label>Menu</span>
-          <span class="menu-symbol" aria-hidden="true">+</span>
-        </button>
+        <div class="nav-controls">
+          <button
+            class="motion-toggle"
+            type="button"
+            aria-pressed="false"
+            hidden
+          >
+            Pause motion
+          </button>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navLinks"
+            hidden
+          >
+            Menu +
+          </button>
+        </div>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#games">Selected work</a></li>
+          <li><a href="#games">Work</a></li>
           <li><a href="#about">Profile</a></li>
           <li><a href="#skills">Toolkit</a></li>
-          <li>
-            <a href="#contact">
-              Contact
-              <span aria-hidden="true">↗</span>
-            </a>
-          </li>
+          <li><a href="#contact">Contact ↗</a></li>
         </ul>
       </nav>
     </header>
 
     <main id="main" tabindex="-1">
-      <section class="hero container" aria-labelledby="page-title">
-        <div class="edition-line meta">
-          <p>Software development &amp; game design</p>
-          <p>Hamilton, Ontario · Canada</p>
+      <section class="hero page" aria-labelledby="page-title">
+        <div class="edition-line label">
+          <span>Independent portfolio / File № 07–597</span>
+          <span>Hamilton, Ontario · 2026</span>
         </div>
-        <div class="masthead">
-          <h1 id="page-title">Ahmed Ali.</h1>
-          <p class="masthead-note">
-            Developer.
-            <br />
-            Game maker.
-            <br />
-            Storyteller.
-          </p>
-        </div>
+        <h1 class="masthead" id="page-title">
+          <span data-reveal="headline">Ahmed</span>
+          <span data-reveal="headline">Ali</span>
+        </h1>
 
         <div class="hero-grid">
-          <div class="hero-intro">
-            <p class="eyebrow">A mind for the details</p>
-            <h2>
-              Curiosity at work.
-              <br />
-              Evidence in code.
-            </h2>
-            <p class="hero-lede">
-              I build full-stack web applications and games. From a database
-              schema to a playable world, I like figuring out how things
-              work—and making them work well.
-            </p>
-            <div class="actions">
-              <a class="button" href="#games">
-                Explore the work
-                <span aria-hidden="true">↓</span>
-              </a>
-              <a class="text-link" href="#contact">
-                Get in touch
-                <span aria-hidden="true">↗</span>
-              </a>
+          <div class="hero-copy">
+            <h2 data-reveal>Developer.<br /><em>Detail detective.</em></h2>
+            <div class="hero-description">
+              <p>
+                I build full-stack applications and games. I like getting to the
+                bottom of a problem—and making something worth exploring.
+              </p>
+              <p class="label availability">
+                Available for hire<br />Junior software developer
+              </p>
             </div>
-            <p class="availability">
-              Available for hire
-              <span aria-hidden="true">/</span>
-              Junior software developer
-            </p>
+            <div class="hero-index">
+              <p class="label">Follow the evidence</p>
+              <a href="#case-tt"
+                ><span>03 / Tap to Trade</span
+                ><span class="index-type">Full-stack</span
+                ><span aria-hidden="true">↗</span></a
+              >
+              <a href="#case-eg"
+                ><span>01 / Emotional Garden</span
+                ><span class="index-type">Unity</span
+                ><span aria-hidden="true">↗</span></a
+              >
+              <a href="#case-cp"
+                ><span>02 / Cosmic Perfection</span
+                ><span class="index-type">Unity</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </div>
           </div>
-
-          <figure class="portrait">
-            <img
-              src="assets/img/profile-noir.jpg"
-              alt="Black-and-white portrait of Ahmed Ali"
-              width="600"
-              height="600"
-              fetchpriority="high"
-              decoding="async"
-            />
-            <figcaption class="meta">
-              <span>Exhibit A</span>
-              <span>The developer</span>
+          <figure class="portrait" data-reveal>
+            <div class="portrait-image">
+              <img
+                src="assets/img/profile-noir.jpg"
+                alt="Black-and-white portrait of Ahmed Ali"
+                width="600"
+                height="600"
+                fetchpriority="high"
+                decoding="async"
+              />
+              <span class="file-stamp" aria-hidden="true"
+                >Subject<br /><strong>A. Ali</strong></span
+              >
+            </div>
+            <figcaption class="label">
+              <span>Exhibit A / The developer</span><span>On the case ↓</span>
             </figcaption>
           </figure>
-
-          <aside class="file-index" aria-label="Featured case index">
-            <p class="eyebrow">Inside the file</p>
-            <ol>
-              <li>
-                <a href="#case-tt">
-                  <span class="meta">03 / Full-stack</span>
-                  <span class="index-title">Tap to Trade</span>
-                  <span class="index-detail">A local trading marketplace</span>
-                </a>
-              </li>
-              <li>
-                <a href="#case-eg">
-                  <span class="meta">01 / Unity</span>
-                  <span class="index-title">Emotional Garden</span>
-                  <span class="index-detail">A quieter kind of game</span>
-                </a>
-              </li>
-              <li>
-                <a href="#case-cp">
-                  <span class="meta">02 / Unity</span>
-                  <span class="index-title">Cosmic Perfection</span>
-                  <span class="index-detail">Precision under pressure</span>
-                </a>
-              </li>
-            </ol>
-          </aside>
         </div>
-        <div class="hero-foot meta">
-          <span>Java · Full-stack web · Game development</span>
-          <span>File № 07–597</span>
+        <div class="hero-foot label">
+          <span>Software development · Game design · Visual storytelling</span
+          ><a href="#games">Scroll to investigate ↓</a>
+        </div>
+      </section>
+
+      <section class="desk-note ink" aria-labelledby="desk-title">
+        <div class="page">
+          <p class="label" id="desk-title">A note from the desk</p>
+          <p class="editorial-note" data-reveal>
+            Every project starts with a question.<br />I follow it through the
+            code,<br />until the pieces <em>come together.</em>
+          </p>
+          <p class="label">
+            Java, JavaScript &amp; a healthy dose of curiosity.
+          </p>
         </div>
       </section>
 
       <section class="work paper" id="games" aria-labelledby="work-title">
-        <div class="container section-space">
-          <header class="section-heading">
-            <div>
-              <p class="eyebrow">01 / The evidence</p>
-              <h2 id="work-title">Selected work</h2>
-            </div>
-            <p class="section-note">
-              Three projects.
-              <br />
-              A closer look at the work.
-            </p>
-          </header>
-
-          <article
-            class="featured-case"
-            id="case-tt"
-            aria-labelledby="trade-title"
-          >
-            <div class="featured-story">
-              <p class="eyebrow">
-                Case 03 · Featured capstone · Full-stack development
-              </p>
-              <h3 id="trade-title">Tap to Trade</h3>
-              <p class="project-deck">
-                Connecting local players,
-                <br />
-                one trade at a time.
-              </p>
-              <p>
-                A marketplace for Magic: The Gathering players to share bulk
-                inventories, search by card and city, and arrange in-person
-                trades. My final-year capstone brings inventory management,
-                offers and moderation into one web application.
-              </p>
-              <div class="project-findings">
-                <div>
-                  <h4>The problem</h4>
-                  <p>
-                    Finding nearby players with the right cards in their bulk
-                    collections.
-                  </p>
-                </div>
-                <div>
-                  <h4>The approach</h4>
-                  <p>
-                    Searchable inventories, counter-offers, role-based
-                    moderation and report handling.
-                  </p>
-                </div>
-              </div>
-              <div class="actions">
-                <a
-                  class="button"
-                  href="mailto:ahmedali.mohamed7597@gmail.com?subject=Tap%20to%20Trade%20source%20access"
-                >
-                  Request source access
-                  <span aria-hidden="true">↗</span>
-                </a>
-                <a
-                  class="text-link"
-                  href="mailto:ahmedali.mohamed7597@gmail.com?subject=About%20Tap%20to%20Trade"
-                >
-                  Discuss the project
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-            <aside
-              class="build-notes"
-              aria-label="Tap to Trade technical details"
-            >
-              <div class="notes-heading">
-                <span class="eyebrow">Technical record</span>
-                <span class="record-number" aria-hidden="true">03</span>
-              </div>
-              <h4>
-                Built from the
-                <br />
-                database up.
-              </h4>
-              <dl class="fact-list">
-                <div>
-                  <dt>Backend</dt>
-                  <dd>Node.js &amp; Express</dd>
-                </div>
-                <div>
-                  <dt>Database</dt>
-                  <dd>PostgreSQL</dd>
-                </div>
-                <div>
-                  <dt>Interface</dt>
-                  <dd>REST API</dd>
-                </div>
-                <div>
-                  <dt>Testing</dt>
-                  <dd>Jest &amp; Cypress</dd>
-                </div>
-                <div>
-                  <dt>Security testing</dt>
-                  <dd>OWASP ZAP</dd>
-                </div>
-                <div>
-                  <dt>Deployment</dt>
-                  <dd>Render</dd>
-                </div>
-              </dl>
-              <p class="notes-foot meta">Mohawk College / Capstone project</p>
-            </aside>
-          </article>
-
-          <div class="games-heading">
-            <p class="eyebrow">The interactive cases</p>
-            <p class="meta">Unity / C# / Playable demos</p>
+        <div class="page">
+          <div class="section-meta label">
+            <span>01 / The evidence</span><span>Three selected projects</span>
           </div>
-          <div class="game-grid">
-            <article
-              class="game-case"
-              id="case-eg"
-              aria-labelledby="garden-title"
-            >
-              <p class="eyebrow">Case 01 · Game development</p>
+          <h2 class="display-heading" id="work-title" data-reveal>
+            Case files
+          </h2>
+          <p class="work-intro">
+            A few things I’ve built. Open a file for the details.
+          </p>
+
+          <details class="case" id="case-tt" open>
+            <summary>
+              <span class="case-number label">03</span>
+              <h3>Tap to Trade</h3>
+              <span class="case-category label">Full-stack / Capstone</span>
+              <span class="case-symbol" aria-hidden="true">+</span>
+            </summary>
+            <div class="case-body">
+              <div class="case-story">
+                <p class="project-deck">
+                  Connecting local players,<br /><em>one trade at a time.</em>
+                </p>
+                <p>
+                  A marketplace for Magic: The Gathering players to share bulk
+                  inventories, search by card and city, and arrange in-person
+                  trades. My final-year capstone brings inventory management,
+                  offers and moderation into one web application.
+                </p>
+                <p>
+                  Searchable inventories and counter-offers help players find a
+                  match. Role-based moderation and report handling keep the
+                  community manageable.
+                </p>
+                <div class="actions">
+                  <a
+                    class="text-link"
+                    href="mailto:ahmedali.mohamed7597@gmail.com?subject=Tap%20to%20Trade%20source%20access"
+                    >Request source access <span aria-hidden="true">↗</span></a
+                  >
+                  <a
+                    class="text-link"
+                    href="mailto:ahmedali.mohamed7597@gmail.com?subject=About%20Tap%20to%20Trade"
+                    >Discuss the project <span aria-hidden="true">↗</span></a
+                  >
+                </div>
+              </div>
+              <aside
+                class="technical-record"
+                aria-label="Tap to Trade technical details"
+              >
+                <p class="label">Evidence log / Technical record</p>
+                <dl class="fact-list">
+                  <div>
+                    <dt>Backend</dt>
+                    <dd>Node.js &amp; Express</dd>
+                  </div>
+                  <div>
+                    <dt>Database</dt>
+                    <dd>PostgreSQL</dd>
+                  </div>
+                  <div>
+                    <dt>Interface</dt>
+                    <dd>REST API</dd>
+                  </div>
+                  <div>
+                    <dt>Testing</dt>
+                    <dd>Jest &amp; Cypress</dd>
+                  </div>
+                  <div>
+                    <dt>Security testing</dt>
+                    <dd>OWASP ZAP</dd>
+                  </div>
+                  <div>
+                    <dt>Deployment</dt>
+                    <dd>Render</dd>
+                  </div>
+                </dl>
+                <p class="label record-foot">
+                  Mohawk College / Final-year capstone
+                </p>
+              </aside>
+            </div>
+          </details>
+
+          <details class="case" id="case-eg">
+            <summary>
+              <span class="case-number label">01</span>
+              <h3>Emotional Garden</h3>
+              <span class="case-category label">Unity / C#</span>
+              <span class="case-symbol" aria-hidden="true">+</span>
+            </summary>
+            <div class="case-body">
               <figure class="demo">
                 <video
                   controls
@@ -302,68 +260,75 @@
                   width="1280"
                   height="642"
                   aria-label="Emotional Garden gameplay demo"
-                  aria-describedby="garden-caption"
+                  aria-describedby="garden-caption garden-voice-note"
                   data-video
                 >
                   <source
                     src="assets/videos/emotional-garden.mp4"
                     type="video/mp4"
                   />
-                  <a href="assets/videos/emotional-garden.mp4">
-                    Download the Emotional Garden demo.
-                  </a>
+                  <a href="assets/videos/emotional-garden.mp4"
+                    >Download the Emotional Garden demo.</a
+                  >
                 </video>
                 <p class="video-status" role="status" hidden>
                   The recording could not load. Try the download link below.
                 </p>
                 <figcaption id="garden-caption">
-                  <span>01 / Emotional Garden · Gameplay recording</span>
-                  <a href="assets/videos/emotional-garden.mp4" download>
-                    Download clip
-                  </a>
+                  <span>Exhibit 01 / Gameplay recording</span
+                  ><a href="assets/videos/emotional-garden.mp4" download
+                    >Download clip ↓</a
+                  >
                 </figcaption>
+                <p class="clip-note" id="garden-voice-note">
+                  The voice in this clip is my project partner’s, not mine. We
+                  worked on Emotional Garden together.
+                </p>
               </figure>
-              <h3 id="garden-title">Emotional Garden</h3>
-              <p class="project-deck">
-                A quiet game about feelings that grow back.
-              </p>
-              <p>
-                A meditative Unity experience where each emotion becomes a seed
-                to tend. Built in C# with hand-tuned shaders, ambient audio and
-                a slow, deliberate sense of time.
-              </p>
-              <ul class="stack-list" aria-label="Emotional Garden technologies">
-                <li>Unity</li>
-                <li>C#</li>
-                <li>Shader Graph</li>
-                <li>2D</li>
-              </ul>
-              <div class="actions">
-                <a
-                  class="text-link"
-                  href="https://github.com/Ahmedali7597/EmotionalGarden"
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <div class="case-story">
+                <p class="project-deck">
+                  A quiet game about<br /><em>feelings that grow back.</em>
+                </p>
+                <p>
+                  A meditative Unity experience where each emotion becomes a
+                  seed to tend. Built in C# with hand-tuned shaders, ambient
+                  audio and a slow, deliberate sense of time.
+                </p>
+                <ul
+                  class="stack-list"
+                  aria-label="Emotional Garden technologies"
                 >
-                  View source
-                  <span aria-hidden="true">↗</span>
-                </a>
-                <a
-                  class="text-link"
-                  href="mailto:ahmedali.mohamed7597@gmail.com?subject=About%20Emotional%20Garden"
-                >
-                  Ask about it
-                  <span aria-hidden="true">↗</span>
-                </a>
+                  <li>Unity</li>
+                  <li>C#</li>
+                  <li>Shader Graph</li>
+                  <li>2D</li>
+                </ul>
+                <div class="actions">
+                  <a
+                    class="text-link"
+                    href="https://github.com/Ahmedali7597/EmotionalGarden"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >View source <span aria-hidden="true">↗</span></a
+                  >
+                  <a
+                    class="text-link"
+                    href="mailto:ahmedali.mohamed7597@gmail.com?subject=About%20Emotional%20Garden"
+                    >Ask about it <span aria-hidden="true">↗</span></a
+                  >
+                </div>
               </div>
-            </article>
+            </div>
+          </details>
 
-            <article
-              class="game-case"
-              id="case-cp"
-              aria-labelledby="cosmic-title"
-            >
-              <p class="eyebrow">Case 02 · Game development</p>
+          <details class="case" id="case-cp">
+            <summary>
+              <span class="case-number label">02</span>
+              <h3>Cosmic Perfection</h3>
+              <span class="case-category label">Unity / C#</span>
+              <span class="case-symbol" aria-hidden="true">+</span>
+            </summary>
+            <div class="case-body">
               <figure class="demo">
                 <video
                   controls
@@ -380,131 +345,131 @@
                     src="assets/videos/cosmic-perfection.mp4"
                     type="video/mp4"
                   />
-                  <a href="assets/videos/cosmic-perfection.mp4">
-                    Download the Cosmic Perfection demo.
-                  </a>
+                  <a href="assets/videos/cosmic-perfection.mp4"
+                    >Download the Cosmic Perfection demo.</a
+                  >
                 </video>
                 <p class="video-status" role="status" hidden>
                   The recording could not load. Try the download link below.
                 </p>
                 <figcaption id="cosmic-caption">
-                  <span>02 / Cosmic Perfection · Gameplay recording</span>
-                  <a href="assets/videos/cosmic-perfection.mp4" download>
-                    Download clip
-                  </a>
+                  <span>Exhibit 02 / Gameplay recording</span
+                  ><a href="assets/videos/cosmic-perfection.mp4" download
+                    >Download clip ↓</a
+                  >
                 </figcaption>
               </figure>
-              <h3 id="cosmic-title">Cosmic Perfection</h3>
-              <p class="project-deck">
-                Precision and rhythm in a field of chaos.
-              </p>
-              <p>
-                Hundreds of projectiles. One small ship. A demanding Unity
-                bullet-hell with carefully tuned collisions, responsive
-                feedback, and attack patterns that reward practice.
-              </p>
-              <ul
-                class="stack-list"
-                aria-label="Cosmic Perfection technologies"
-              >
-                <li>Unity</li>
-                <li>C#</li>
-                <li>Bullet hell</li>
-                <li>SFX &amp; VFX</li>
-              </ul>
-              <div class="actions">
-                <a
-                  class="text-link"
-                  href="mailto:ahmedali.mohamed7597@gmail.com?subject=Cosmic%20Perfection%20build%20request"
+              <div class="case-story">
+                <p class="project-deck">
+                  Precision and rhythm<br /><em>in a field of chaos.</em>
+                </p>
+                <p>
+                  Hundreds of projectiles. One small ship. A demanding Unity
+                  bullet-hell with carefully tuned collisions, responsive
+                  feedback, and attack patterns that reward practice.
+                </p>
+                <ul
+                  class="stack-list"
+                  aria-label="Cosmic Perfection technologies"
                 >
-                  Request a build
-                  <span aria-hidden="true">↗</span>
-                </a>
-                <a class="text-link" href="#case-eg">
-                  Previous case
-                  <span aria-hidden="true">↑</span>
-                </a>
+                  <li>Unity</li>
+                  <li>C#</li>
+                  <li>Bullet hell</li>
+                  <li>SFX &amp; VFX</li>
+                </ul>
+                <div class="actions">
+                  <a
+                    class="text-link"
+                    href="mailto:ahmedali.mohamed7597@gmail.com?subject=Cosmic%20Perfection%20build%20request"
+                    >Request a build <span aria-hidden="true">↗</span></a
+                  >
+                  <a class="text-link" href="#case-eg"
+                    >Previous case <span aria-hidden="true">↑</span></a
+                  >
+                </div>
               </div>
-            </article>
-          </div>
+            </div>
+          </details>
         </div>
       </section>
 
       <section class="profile ink" id="about" aria-labelledby="about-title">
-        <div class="container section-space">
-          <header class="section-heading">
-            <div>
-              <p class="eyebrow">02 / The suspect</p>
-              <h2 id="about-title">Behind the work</h2>
-            </div>
-            <p class="section-note">
-              The person
-              <br />
-              behind the commits.
-            </p>
-          </header>
-          <div class="profile-grid">
-            <blockquote class="profile-note">
-              <p>
-                Hamilton, late hours. A compiler error and a cup of cold coffee.
-                Somewhere in between, a solution takes shape.
-              </p>
+        <h2 class="visually-hidden" id="about-title">Behind the work</h2>
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>Behind the work /&nbsp;</span
+            ><span>Behind the work /&nbsp;</span>
+          </div>
+        </div>
+        <div class="profile-grid page">
+          <figure class="personal-note" data-reveal>
+            <figcaption class="label">02 / Off the clock</figcaption>
+            <blockquote class="mystery-quote" id="mystery-quote">
+              <p>Magic: The Gathering at the table.</p>
+              <p>Yes, there’s always room for coffee.</p>
+              <p>Solving puzzles, one clue at a time.</p>
+              <p>True crime, with a theory of my own.</p>
+              <p>Escaping into a good video game.</p>
+              <p>Reworking a photo or a short film.</p>
+              <p>Yet another curiosity to follow.</p>
             </blockquote>
-            <div class="profile-copy">
-              <p>
-                I’m a software developer based in Hamilton, Ontario, with a
-                background in software development at Mohawk College. I work
-                across full-stack web applications, games and visual media.
-              </p>
-              <p>
-                I write clean, testable code and see projects through to
-                deployment. I enjoy the details: tracing a bug, shaping an
-                interaction, or connecting a front end to the data behind it.
-              </p>
-              <p>
-                Outside the code, I make videos, edit photos and produce short
-                films. That attention to visual storytelling carries into the
-                software and games I build.
-              </p>
-              <dl class="profile-facts">
-                <div>
-                  <dt>Education</dt>
-                  <dd>Mohawk College · Software Development</dd>
-                </div>
-                <div>
-                  <dt>Specialty</dt>
-                  <dd>Java · Full-stack web · Game development</dd>
-                </div>
-              </dl>
+            <div class="clue-footer">
+              <p class="label">There’s a clue in the first letters.</p>
+              <button
+                class="clue-toggle"
+                type="button"
+                aria-pressed="false"
+                aria-controls="mystery-quote"
+                hidden
+              >
+                Reveal initials +
+              </button>
             </div>
+          </figure>
+          <div class="profile-copy" data-reveal>
+            <p>
+              I’m a software developer based in Hamilton, Ontario, with a
+              background in software development at Mohawk College. I work
+              across full-stack web applications, games and visual media.
+            </p>
+            <p>
+              I enjoy the details: tracing a bug, shaping an interaction, or
+              connecting a front end to the data behind it. I write clean,
+              testable code and see projects through to deployment.
+            </p>
+            <p>
+              Outside the code, I make videos, edit photos and produce short
+              films. That interest in visual storytelling carries into the
+              software and games I build.
+            </p>
+            <dl class="profile-facts">
+              <div>
+                <dt>Education</dt>
+                <dd>Mohawk College · Software Development</dd>
+              </div>
+              <div>
+                <dt>Focus</dt>
+                <dd>Java · Full-stack web · Game development</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
-      <section class="toolkit ink" id="skills" aria-labelledby="skills-title">
-        <div class="container section-space">
-          <header class="section-heading">
-            <div>
-              <p class="eyebrow">03 / The toolkit</p>
-              <h2 id="skills-title">Tools of the trade</h2>
-            </div>
-            <p class="section-note">
-              From the first line
-              <br />
-              to the final frame.
-            </p>
-          </header>
+      <section class="toolkit paper" id="skills" aria-labelledby="skills-title">
+        <div class="page">
+          <div class="section-meta label">
+            <span>03 / The toolkit</span
+            ><span>From the first line to the final frame</span>
+          </div>
+          <h2 class="serif-heading" id="skills-title" data-reveal>
+            Tools of the trade.
+          </h2>
           <div class="skills-grid">
-            <div class="skill-column">
-              <h3>
-                <span class="meta">01</span>
-                Languages
-              </h3>
+            <div class="skill-column" data-reveal>
+              <h3><span class="label">01</span> Languages</h3>
               <ul>
-                <li>
-                  Java
-                  <span>Specialty</span>
-                </li>
+                <li>Java <span class="label">Specialty</span></li>
                 <li>JavaScript</li>
                 <li>HTML &amp; CSS</li>
                 <li>PHP</li>
@@ -512,11 +477,8 @@
                 <li>Python</li>
               </ul>
             </div>
-            <div class="skill-column">
-              <h3>
-                <span class="meta">02</span>
-                Web &amp; practice
-              </h3>
+            <div class="skill-column" data-reveal>
+              <h3><span class="label">02</span> Web &amp; practice</h3>
               <ul>
                 <li>Node.js &amp; Express</li>
                 <li>SQL &amp; PostgreSQL</li>
@@ -526,11 +488,8 @@
                 <li>AI-assisted development</li>
               </ul>
             </div>
-            <div class="skill-column">
-              <h3>
-                <span class="meta">03</span>
-                Games &amp; media
-              </h3>
+            <div class="skill-column" data-reveal>
+              <h3><span class="label">03</span> Games &amp; media</h3>
               <ul>
                 <li>Unity &amp; Unreal Engine</li>
                 <li>Shader Graph</li>
@@ -544,81 +503,63 @@
         </div>
       </section>
 
-      <section
-        class="contact paper"
-        id="contact"
-        aria-labelledby="contact-title"
-      >
-        <div class="container section-space">
-          <p class="eyebrow">04 / Make contact</p>
+      <section class="contact ink" id="contact" aria-labelledby="contact-title">
+        <div class="page">
+          <div class="section-meta label">
+            <span>04 / Make contact</span><span>Open for opportunities</span>
+          </div>
+          <h2 class="display-heading" id="contact-title" data-reveal>
+            Got a lead?
+          </h2>
           <div class="contact-grid">
             <div>
-              <h2 id="contact-title">
-                Let’s open
-                <br />
-                a new case.
-              </h2>
-              <p class="contact-intro">
-                Have a role, a project, or a question about the work? I’d like
-                to hear from you.
+              <p class="contact-note">
+                A role, a project,<br />or a good question.<br /><em
+                  >Let’s talk.</em
+                >
               </p>
-              <p class="meta contact-location">Hamilton, Ontario · Canada</p>
+              <p class="label">Hamilton, Ontario · Canada</p>
             </div>
             <div class="contact-details">
-              <p class="eyebrow">Correspondence</p>
+              <p class="label">Correspondence</p>
               <a
                 class="contact-email"
                 href="mailto:ahmedali.mohamed7597@gmail.com"
+                >ahmedali.mohamed7597@gmail.com
+                <span aria-hidden="true">↗</span></a
               >
-                ahmedali.mohamed7597@gmail.com
-              </a>
-              <a
-                class="button"
-                href="mailto:ahmedali.mohamed7597@gmail.com?subject=Found%20your%20portfolio"
-              >
-                Send a message
-                <span aria-hidden="true">↗</span>
-              </a>
               <ul class="social-links" aria-label="Social profiles">
                 <li>
                   <a
                     href="https://github.com/Ahmedali7597"
                     target="_blank"
                     rel="noopener noreferrer"
+                    >GitHub ↗</a
                   >
-                    GitHub
-                    <span aria-hidden="true">↗</span>
-                  </a>
                 </li>
                 <li>
                   <a
                     href="https://www.linkedin.com/in/ahmed-ali-229b89229/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    >LinkedIn ↗</a
                   >
-                    LinkedIn
-                    <span aria-hidden="true">↗</span>
-                  </a>
                 </li>
                 <li>
                   <a
                     href="https://x.com/Ahmed_Ali7597"
                     target="_blank"
                     rel="noopener noreferrer"
+                    >X / Twitter ↗</a
                   >
-                    X / Twitter
-                    <span aria-hidden="true">↗</span>
-                  </a>
                 </li>
                 <li>
                   <a
                     href="https://www.instagram.com/ahmed_ali_6361/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    >Instagram ↗</a
                   >
-                    Instagram
-                    <span aria-hidden="true">↗</span>
-                  </a>
                 </li>
               </ul>
             </div>
@@ -627,17 +568,11 @@
       </section>
     </main>
 
-    <footer class="site-footer paper">
-      <div class="container footer-row">
-        <p>
-          ©
-          <span id="yr">2026</span>
-          Ahmed Ali · Designed &amp; developed by Ahmed Ali
-        </p>
-        <a href="#top">
-          End of file. Back to top
-          <span aria-hidden="true">↑</span>
-        </a>
+    <footer class="site-footer ink">
+      <div class="page footer-row label">
+        <p>© <span id="yr">2026</span> Ahmed Ali</p>
+        <span>Designed &amp; developed by Ahmed Ali</span>
+        <a href="#top">End of file / Back to top ↑</a>
       </div>
     </footer>
   </body>

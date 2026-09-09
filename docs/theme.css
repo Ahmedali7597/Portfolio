@@ -1,34 +1,27 @@
-/* Ahmed Ali — semantic themes using ordinary CSS without a build tool. */
+/* Two flat print surfaces; extra-dark noir is reserved for the portrait/footer. */
 :root,
-.ink {
-  color-scheme: dark;
-  --surface: var(--color-noir);
-  --text: var(--color-paper);
-  --muted: var(--color-pebble);
-  --rule: var(--color-sepia);
-  --strong-rule: var(--color-midstone);
-  --action-background: var(--color-paper);
-  --action-text: var(--color-headline-ink);
-}
-
 .paper {
   color-scheme: light;
   --surface: var(--color-paper);
   --text: var(--color-headline-ink);
   --muted: var(--color-ash);
   --rule: var(--color-midstone);
-  --strong-rule: var(--color-headline-ink);
-  --action-background: var(--color-headline-ink);
-  --action-text: var(--color-paper);
 }
 
-.ink,
-.paper {
+.ink {
+  color-scheme: dark;
+  --surface: var(--color-headline-ink);
+  --text: var(--color-paper);
+  --muted: var(--color-pebble);
+  --rule: var(--color-ash);
+}
+
+.paper,
+.ink {
   color: var(--text);
   background-color: var(--surface);
 }
 
-/* Static texture sits behind text and project media. */
 .paper {
   background-image: url("assets/img/paper-grain.svg");
 }
