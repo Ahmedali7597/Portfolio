@@ -1,9 +1,9 @@
 // Entry point: each module owns one part of the page and its event listeners.
-import { initTheme } from "./scripts/theme.js?v=20260909-newswire";
-import { initNavigation } from "./scripts/navigation.js?v=20260909-newswire";
-import { initProjects } from "./scripts/projects.js?v=20260909-newswire";
-import { initMotion } from "./scripts/motion.js?v=20260909-newswire";
-import { initIntro } from "./scripts/intro.js?v=20260909-newswire";
+import { initTheme } from "./scripts/theme.js?v=20260910-review";
+import { initNavigation } from "./scripts/navigation.js?v=20260910-review";
+import { initProjects } from "./scripts/projects.js?v=20260910-review";
+import { initMotion } from "./scripts/motion.js?v=20260910-review";
+import { initIntro } from "./scripts/intro.js?v=20260910-review";
 
 initTheme();
 initNavigation();

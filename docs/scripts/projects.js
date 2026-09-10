@@ -8,11 +8,15 @@ export function initProjects() {
         if (other !== video) other.pause();
       });
     });
+    const notice = video.closest("figure")?.querySelector(".video-status");
     // A failed source can report its error separately from the player itself.
     function showVideoError() {
-      const notice = video.closest("figure")?.querySelector(".video-status");
       if (notice) notice.hidden = false;
     }
+    // A successful retry should clear the earlier network error.
+    video.addEventListener("loadeddata", () => {
+      if (notice) notice.hidden = true;
+    });
     video.addEventListener("error", showVideoError);
     video
       .querySelectorAll("source")
@@ -40,16 +44,20 @@ export function initProjects() {
   });
 
   // Printed editions include every project without changing the on-screen selection.
-  let printState = [];
+  let printState = null;
   window.addEventListener("beforeprint", () => {
+    // Some browsers announce print preview more than once before it closes.
+    if (printState) return;
     printState = cases.map((item) => item.open);
     cases.forEach((item) => {
       item.open = true;
     });
   });
   window.addEventListener("afterprint", () => {
+    if (!printState) return;
     cases.forEach((item, index) => {
       item.open = printState[index];
     });
+    printState = null;
   });
 }

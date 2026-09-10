@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&amp;family=Anton&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&amp;family=Anton&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@400;600&amp;display=swap"
       rel="stylesheet"
     />
     <link rel="preload" href="assets/img/profile-noir.jpg" as="image" />
@@ -49,12 +49,12 @@
       }
     </script>
     <!-- Load tokens and colors first, layout next, and motion overrides last. -->
-    <link rel="stylesheet" href="variables.css?v=20260909-newswire" />
-    <link rel="stylesheet" href="theme.css?v=20260909-newswire" />
-    <link rel="stylesheet" href="styles.css?v=20260909-newswire" />
-    <link rel="stylesheet" href="intro.css?v=20260909-newswire" />
-    <link rel="stylesheet" href="motion.css?v=20260909-newswire" />
-    <script type="module" src="script.js?v=20260909-newswire"></script>
+    <link rel="stylesheet" href="variables.css?v=20260910-review" />
+    <link rel="stylesheet" href="theme.css?v=20260910-review" />
+    <link rel="stylesheet" href="styles.css?v=20260910-review" />
+    <link rel="stylesheet" href="intro.css?v=20260910-review" />
+    <link rel="stylesheet" href="motion.css?v=20260910-review" />
+    <script type="module" src="script.js?v=20260910-review"></script>
   </head>
   <body class="paper" id="top" data-motion="off">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -222,7 +222,7 @@
 
     <main id="main" tabindex="-1">
       <!-- Front page: masthead, moving newswire, author introduction and story previews. -->
-      <section class="hero page" aria-labelledby="page-title">
+      <section class="page" aria-labelledby="page-title">
         <div class="edition-line label">
           <span>Vol. 01 / Edition № 07–597</span>
           <span class="edition-name">The personal edition</span>
@@ -311,7 +311,11 @@
         </div>
 
         <!-- Preview links open the matching project story further down the page. -->
-        <div class="edition-stories" aria-label="Inside this edition">
+        <div
+          class="edition-stories"
+          role="group"
+          aria-label="Inside this edition"
+        >
           <a
             class="news-preview news-preview-text"
             href="#case-tt"
@@ -501,7 +505,7 @@
                   width="1280"
                   height="642"
                   aria-label="Emotional Garden gameplay demo"
-                  aria-describedby="garden-caption garden-voice-note"
+                  aria-describedby="garden-caption"
                   data-video
                 >
                   <source
@@ -520,11 +524,11 @@
                   ><a href="assets/videos/emotional-garden.mp4" download
                     >Download clip ↓</a
                   >
+                  <p class="clip-note" id="garden-voice-note">
+                    The voice in this clip is my project partner’s, not mine. We
+                    worked on Emotional Garden together.
+                  </p>
                 </figcaption>
-                <p class="clip-note" id="garden-voice-note">
-                  The voice in this clip is my project partner’s, not mine. We
-                  worked on Emotional Garden together.
-                </p>
               </figure>
               <div class="case-story">
                 <p class="project-deck">
@@ -649,7 +653,7 @@
           </div>
         </div>
         <div class="profile-grid page">
-          <figure class="personal-note" data-reveal>
+          <figure data-reveal>
             <figcaption class="label">02 / The personal column</figcaption>
             <h3 class="personal-headline">
               A story to tell.<br /><em>A coffee to pour.</em>
