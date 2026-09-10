@@ -8,8 +8,12 @@ export function initTheme() {
     themeToggle.title =
       theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor)
-      themeColor.content = theme === "dark" ? "#171816" : "#f0ece3";
+    // Read the active paper color from CSS instead of duplicating theme values here.
+    if (themeColor) {
+      themeColor.content = getComputedStyle(document.documentElement)
+        .getPropertyValue("--surface")
+        .trim();
+    }
   }
   // The small script in index.html has already restored a saved choice before first paint.
   applyTheme(

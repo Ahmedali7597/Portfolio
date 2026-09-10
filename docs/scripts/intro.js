@@ -1,7 +1,7 @@
 import {
   isMotionEnabled,
   startContentMotion,
-} from "./motion.js?v=20260909-newswire";
+} from "./motion.js?v=20260910-review";
 
 // Manage the opening dialog, its timeout and replay without delaying the actual page load.
 export function initIntro() {

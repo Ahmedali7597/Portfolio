@@ -136,6 +136,8 @@ function initScrollEffects() {
   }
   window.addEventListener("scroll", queueScrollEffects, { passive: true });
   window.addEventListener("resize", queueScrollEffects);
+  // Details toggle does not bubble; capture it so a longer story updates the reading progress.
+  document.addEventListener("toggle", queueScrollEffects, true);
   document.addEventListener("motionchange", queueScrollEffects);
   updateScrollEffects();
 

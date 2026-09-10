@@ -76,7 +76,21 @@ by one group, so the second copy meets the first at the loop boundary. Hover
 and the motion control pause its existing timeline instead of restarting it.
 Keep both groups identical when changing their text.
 
-`tokens.json` is the portable version of the design values. Update it alongside
-`variables.css` when changing a shared token. When changing module imports,
-use the same version suffix everywhere so the intro and entry point load one
-shared instance of the motion module.
+Shared design values live in `docs/variables.css`. There is no generated token
+file or build step to keep in sync. When changing module imports, use the same
+version suffix everywhere so the intro and entry point load one shared instance
+of the motion module.
+
+## Files and publishing
+
+GitHub Pages publishes the `docs/` directory from `main`.
+The empty `docs/.nojekyll` file tells GitHub to publish these static files directly.
+It is a hosting setting, not an unused text file.
+
+Every stylesheet and script is loaded by `index.html` or another module.
+The portrait, paper texture and project posters appear in the layout. Both
+video files back the on-page players and download links; their `preload="none"`
+setting avoids downloading the recordings until requested.
+
+Print styles use black text on white paper and reveal all project stories.
+The print listeners restore the reader's open/closed stories after preview closes.
