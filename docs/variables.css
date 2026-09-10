@@ -13,6 +13,7 @@
   --color-night-muted: #b3b0a6;
   --color-night-rule: #62635c;
 
+  --font-newsprint: "UnifrakturMaguntia", Georgia, serif;
   --font-masthead: "Anton", Impact, "Arial Narrow", sans-serif;
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body:
@@ -24,6 +25,8 @@
 
   --duration-fast: 140ms;
   --duration-panel: 240ms;
+  --duration-role: 380ms;
+  --duration-role-hold: 3200ms;
   --duration-reveal: 850ms;
   --duration-marquee: 24s;
   --duration-shadows: 6s;

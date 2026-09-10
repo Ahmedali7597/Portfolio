@@ -1,0 +1,298 @@
+/* The Daily Mystery opening spread and its folding animation. */
+.intro-replay {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+}
+.intro-replay:hover {
+  text-decoration: underline;
+}
+.intro-replay:disabled {
+  display: none;
+}
+html:has(.intro[open]) {
+  overflow: hidden;
+}
+.intro {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 1.5rem;
+  border: 0;
+  overflow: hidden;
+  color: var(--text);
+  background: var(--surface);
+  background-image: url("assets/img/paper-grain.svg");
+}
+.intro[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vh, 2rem);
+}
+.intro::backdrop {
+  background: var(--color-noir);
+}
+.intro-skip {
+  position: absolute;
+  z-index: 2;
+  top: 1.1rem;
+  right: var(--page-gutter);
+  min-height: 44px;
+  border: 0;
+  padding: 0.5rem;
+  color: inherit;
+  background: none;
+}
+.intro-announcement {
+  text-align: center;
+}
+.intro-announcement > .label {
+  margin-bottom: 0.75rem;
+}
+.intro-announcement h2 {
+  font: 400 clamp(3rem, 8vw, 6.5rem) / 1 var(--font-masthead);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+.intro-announcement > p:last-child {
+  margin-top: 0.6rem;
+  font: italic clamp(1.8rem, 4vw, 3rem) / 1 var(--font-display);
+}
+.intro-spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(880px, 90vw, calc((100dvh - 255px) * 1.5));
+  container-type: inline-size;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+/* The small printed spread scales as one object, including its actual text columns. */
+.intro-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1cqw;
+  min-width: 0;
+  padding: 1.6cqw;
+  border: 1px solid #a7a194;
+  color: #2a2722;
+  background: #eee7d7 url("assets/img/paper-grain.svg");
+  backface-visibility: hidden;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.18);
+  font: 400 1.48cqw / 1.25 var(--font-display);
+}
+.intro-page p + p {
+  margin-top: 0;
+}
+.intro-page-left {
+  transform-origin: right center;
+}
+.intro-page-right {
+  transform-origin: left center;
+  border-left-color: #c9bfaa;
+}
+.intro-running,
+.intro-dateline,
+.intro-byline,
+.intro-folio,
+.intro-ad-label,
+.intro-ad-foot {
+  font: 400 0.95cqw / 1.4 var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+.intro-running {
+  text-align: center;
+}
+.intro-name {
+  font: 400 6.8cqw / 1 var(--font-newsprint);
+  padding-block: 0.3cqw 0.7cqw;
+  white-space: nowrap;
+}
+.intro-page-left .intro-name {
+  text-align: right;
+}
+.intro-dateline {
+  border-block: 3px double;
+  padding-block: 0.5cqw;
+  text-align: center;
+}
+.intro-headline {
+  font: 600 4.5cqw / 0.92 var(--font-display);
+  text-align: center;
+  letter-spacing: -0.04em;
+}
+.intro-byline {
+  padding-bottom: 0.6cqw;
+  border-bottom: 1px solid #a7a194;
+  text-align: center;
+}
+.intro-columns,
+.intro-feature,
+.intro-ad-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4cqw;
+}
+.intro-columns > p + p,
+.intro-feature > div {
+  border-left: 1px solid #a7a194;
+  padding-left: 1.4cqw;
+}
+.intro-columns p,
+.intro-feature p:not(.intro-small-headline) {
+  text-align: justify;
+  text-wrap: wrap;
+  hyphens: auto;
+}
+.intro-feature {
+  grid-template-columns: 1.1fr 1fr;
+  margin-top: 0.3cqw;
+}
+.intro-feature img {
+  width: 100%;
+  aspect-ratio: 1.15;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: grayscale(1) contrast(1.15);
+}
+.intro-feature figcaption {
+  margin-top: 0.5cqw;
+  font-size: 1.05cqw;
+  font-style: italic;
+}
+.intro-small-headline {
+  font: 600 2.65cqw / 0.95 var(--font-display);
+  margin-bottom: 0.9cqw;
+}
+.intro-feature > div > p + p {
+  margin-top: 0.7cqw;
+}
+.intro-notes {
+  border-block: 1px solid #a7a194;
+  padding-block: 0.8cqw;
+}
+.intro-notes strong {
+  font-size: 1.2cqw;
+}
+.intro-ad,
+.intro-ad-pair {
+  margin-top: auto;
+}
+.intro-ad {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5cqw;
+  border: 3px double;
+  padding: 0.9cqw;
+  text-align: center;
+}
+.intro-ad-trade {
+  border-width: 4px;
+}
+.intro-ad-title {
+  font: 600 3.1cqw / 0.95 var(--font-display);
+  letter-spacing: -0.025em;
+}
+.intro-ad-trade .intro-ad-title {
+  font-family: var(--font-masthead);
+  font-size: 4.2cqw;
+}
+.intro-ad-label,
+.intro-ad-foot {
+  font-size: 0.82cqw;
+}
+.intro-ad-copy {
+  font-size: 1.35cqw;
+}
+.intro-folio {
+  border-top: 1px solid;
+  padding-top: 0.55cqw;
+  text-align: center;
+  font-size: 0.8cqw;
+}
+.intro-bottom {
+  margin: 0;
+  text-align: center;
+  font-size: 0.65rem;
+}
+@keyframes edition-arrives {
+  0% {
+    transform: translateY(70vh) rotate(-18deg) scale(0.35);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(-2deg) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes open-left {
+  from {
+    transform: rotateY(78deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
+@keyframes open-right {
+  from {
+    transform: rotateY(-78deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
+@keyframes press-headline {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+[data-motion="on"] .intro[open] .intro-announcement {
+  animation: press-headline 600ms var(--ease-out) both;
+}
+[data-motion="on"] .intro[open] .intro-spread {
+  animation: edition-arrives 1300ms var(--ease-out) 200ms both;
+}
+[data-motion="on"] .intro[open] .intro-page-left {
+  animation: open-left 1100ms var(--ease-out) 650ms both;
+}
+[data-motion="on"] .intro[open] .intro-page-right {
+  animation: open-right 1100ms var(--ease-out) 650ms both;
+}
+
+@media (max-height: 650px) and (min-width: 600px) {
+  .intro[open] {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-content: center;
+    gap: 0.75rem 1.5rem;
+    padding: 3.5rem 1.5rem 1rem;
+  }
+  .intro-spread {
+    width: min(440px, 100%, calc((100dvh - 125px) * 1.5));
+    justify-self: center;
+  }
+  .intro-announcement h2 {
+    font-size: clamp(2.5rem, 5vw, 3rem);
+  }
+  .intro-announcement > p:last-child {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+  }
+  .intro-bottom {
+    grid-column: 1 / -1;
+  }
+}

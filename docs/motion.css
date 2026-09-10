@@ -1,0 +1,61 @@
+/* Content stays visible until JavaScript enables motion. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes passing-shadows {
+  to {
+    transform: translateY(8%);
+  }
+}
+@keyframes scroll-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+@keyframes open-case {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+[data-motion="on"] .newswire-track,
+[data-motion="on"] .marquee-track {
+  animation: marquee var(--duration-marquee) linear infinite;
+}
+[data-motion="on"] .portrait-image::after {
+  animation: passing-shadows var(--duration-shadows) ease-in-out infinite
+    alternate;
+}
+[data-motion="on"] .case[open] .case-body {
+  animation: open-case var(--duration-panel) var(--ease-out);
+}
+[data-motion="on"] .scroll-cue {
+  animation: scroll-nudge 1.8s ease-in-out infinite;
+}
+.newswire:hover .newswire-track,
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+[data-motion="off"] .portrait-image,
+[data-motion="off"] .portrait img {
+  transform: none;
+}
+[data-motion="off"] *,
+[data-motion="off"] *::before,
+[data-motion="off"] *::after,
+[data-motion="off"] details::details-content {
+  transition: none !important;
+}
+html:has([data-motion="off"]) {
+  scroll-behavior: auto;
+}
