@@ -1,40 +1,54 @@
 # Design notes
 
-Ahmed's portfolio takes the form of a 1950s newspaper with a detective noir mood
-and modern, responsive motion. The supplied files are references, not instructions.
+Ahmed's portfolio is a personal newspaper with a 1950s print identity and modern
+motion. The introductory publication is **The Daily Mystery**, with Ahmed Ali as
+its author. The main masthead remains Ahmed's name. Detective language and
+venetian-blind shadows are limited to the opening portrait and rotating role.
 
 ## Reference lock
 
-[Henry Codes](https://henry.codes/) supplies the scale, strong type contrast,
-full-width paper/ink sections and moving editorial type. [Miranda](https://www.niccolomiranda.com/)
-informs the fine rules, columns and newspaper spacing. The headlines, personal
-story, case files and animated portrait are specific to Ahmed.
+The existing [Henry Codes](https://henry.codes/) reference supplies the large
+type and moving editorial rhythm. [Miranda](https://www.niccolomiranda.com/)
+informs the rules and newspaper spacing. The June 10, 1950
+[Evening Star front page](https://www.loc.gov/resource/sn83045462/1950-06-10/ed-1/?sp=1)
+provides a period reference for the dateline, bylines and dense text columns.
+Its archive text was available; the image endpoint was unavailable.
 
-Refero's bundled craft and motion guidance informed the implementation. Live
-Refero search was unavailable because the connected account has no subscription.
+Refero's bundled typography and motion guidance informs the implementation.
+Live Refero search is unavailable on the connected account.
 
-| Choice                                                                                                | Purpose                                                                                 |
-| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Warm paper `#f0ece3`, ink `#2a2722`, monochrome photographs                                           | A printed newspaper rather than a generic portfolio grid                                |
-| Cormorant Garamond masthead and stories; Anton section headlines; Inter body; Courier labels          | Traditional editorial character with clear modern hierarchy                             |
-| Double rules, bylines, drop cap, project columns and a small classified notice                        | Newspaper details that carry actual portfolio content                                   |
-| Charcoal paper `#171816` and cream text `#e9e4d9` in dark mode                                        | Preserve the same print identity after dark                                             |
-| “Extra! Extra! Read all about it!” and a two-page newspaper unfolding                                 | A short opening sequence built from HTML and CSS                                        |
-| Staggered entrances, moving newswire, rolling case titles, smooth case expansion and portrait shadows | Visible motion at arrival, while scrolling and during interaction                       |
-| Seven story sentences beginning MYSTERY                                                               | A personal clue about coffee, games, true crime, puzzles, Magic and visual storytelling |
-| Individual initial hover, keyboard focus and tap states                                               | Each letter can be discovered independently                                             |
-| Emotional Garden voice credit directly below the recording                                            | Clearly credit Ahmed's project partner                                                  |
-
-The intro closes automatically after 3.4 seconds, supports Skip and Escape, and
-can be replayed from the footer. It is skipped when reduced motion is preferred.
-A visible motion control pauses the continuous effects. Dark mode follows the
-system until the visitor chooses a theme, then remembers that choice locally.
+| Decision                                                                               | Source and purpose                                                |
+| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Light newsprint on a first visit                                                       | User request; dark mode remains an explicit, remembered choice    |
+| The Daily Mystery masthead with Ahmed's byline                                         | User's fictional newspaper identity, confined to the intro        |
+| Blackletter nameplate, four narrow text columns, datelines and bordered advertisements | 1950s newspaper brief and period structure; all copy is original  |
+| Tap to Trade, Emotional Garden and Cosmic Perfection advertisements                    | User request; advertisements appear only in the opening spread    |
+| Developer, Detective, Author, Game developer, Filmmaker                                | User's rotating role idea; one visible phrase every 3.2 seconds   |
+| Stories, the personal column, at the press and letters                                 | User's newspaper wording for the main portfolio sections          |
+| Paper surfaces throughout the main page; noir portrait at the top                      | User's request to reserve the detective treatment for the opening |
+| Independent MYSTERY initials and the partner's voice credit                            | Earlier user requests, retained                                   |
 
 ## Implementation
 
-Plain HTML, CSS and JavaScript; no framework, animation library or build step.
-CSS handles print styling and small interactions. IntersectionObserver and the
-Web Animations API handle entrances without making content depend on JavaScript.
-Native details, video controls and dialog keep the behavior readable and accessible.
-Case expansion uses intrinsic-size transitions where supported, with native
-opening as a fallback. Normal scrolling, existing links and section IDs are retained.
+Plain HTML, CSS and JavaScript with no framework or build step. The miniature
+newspaper is real HTML text arranged in columns and scaled with its container.
+Its two halves unfold, then the page becomes available after 4.2 seconds.
+Skip, Escape and replay remain available. Reduced motion skips the intro.
+
+The role changes with a short CSS transition. The timer starts after the intro,
+pauses with the motion control or a hidden browser tab, and does not advance
+while the headline is off screen. Screen readers receive a stable role description.
+
+Native details and video controls retain the project interactions. Original
+project links and section IDs remain valid. Dark mode stores an explicit choice
+locally; system dark mode no longer changes the initial edition.
+
+## Code organization
+
+The entry script starts five focused modules: theme, navigation, projects, motion
+and intro. Each module owns its listeners and local state. The intro listens for
+motion changes so the pause control and reduced-motion preference stay consistent.
+Opening-spread styles and shared motion rules have their own stylesheets; the main
+stylesheet covers page layout and responsive rules. Browser storage failures leave
+the theme usable, missing controls are tolerated, and native project content stays
+readable if enhancements cannot load.
