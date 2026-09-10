@@ -1,3 +1,4 @@
+// Keep the page colors, button state and browser theme color in sync.
 export function initTheme() {
   const themeToggle = document.querySelector(".theme-toggle");
   if (!themeToggle) return;
@@ -6,12 +7,15 @@ export function initTheme() {
     themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
     themeToggle.title =
       theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
-    document.querySelector('meta[name="theme-color"]').content =
-      theme === "dark" ? "#171816" : "#f0ece3";
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor)
+      themeColor.content = theme === "dark" ? "#171816" : "#f0ece3";
   }
+  // The small script in index.html has already restored a saved choice before first paint.
   applyTheme(
     document.documentElement.dataset.theme === "dark" ? "dark" : "light",
   );
+  // Apply immediately, then remember the choice for the next visit when storage is allowed.
   themeToggle.addEventListener("click", () => {
     const theme =
       document.documentElement.dataset.theme === "dark" ? "light" : "dark";

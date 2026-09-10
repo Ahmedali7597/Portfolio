@@ -10,6 +10,7 @@
     />
     <meta name="author" content="Ahmed Ali" />
     <meta name="theme-color" content="#f0ece3" />
+    <!-- Link previews use the same title, description and portrait as the page. -->
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -47,16 +48,18 @@
         // Light mode remains available when browser storage is blocked.
       }
     </script>
-    <link rel="stylesheet" href="variables.css?v=20260909-daily2" />
-    <link rel="stylesheet" href="theme.css?v=20260909-daily2" />
-    <link rel="stylesheet" href="styles.css?v=20260909-daily2" />
-    <link rel="stylesheet" href="intro.css?v=20260909-daily2" />
-    <link rel="stylesheet" href="motion.css?v=20260909-daily2" />
-    <script type="module" src="script.js?v=20260909-daily2"></script>
+    <!-- Load tokens and colors first, layout next, and motion overrides last. -->
+    <link rel="stylesheet" href="variables.css?v=20260909-newswire" />
+    <link rel="stylesheet" href="theme.css?v=20260909-newswire" />
+    <link rel="stylesheet" href="styles.css?v=20260909-newswire" />
+    <link rel="stylesheet" href="intro.css?v=20260909-newswire" />
+    <link rel="stylesheet" href="motion.css?v=20260909-newswire" />
+    <script type="module" src="script.js?v=20260909-newswire"></script>
   </head>
   <body class="paper" id="top" data-motion="off">
     <a class="skip-link" href="#main">Skip to content</a>
 
+    <!-- Native dialog keeps keyboard focus inside the opening until Skip, Escape or timeout. -->
     <dialog class="intro" aria-labelledby="intro-title">
       <button class="intro-skip label" type="button" autofocus>
         Skip intro ↗
@@ -66,6 +69,7 @@
         <h2 id="intro-title">Extra! Extra!</h2>
         <p>Read all about it!</p>
       </div>
+      <!-- This miniature edition is decorative; the full project stories follow below. -->
       <div class="intro-spread" aria-hidden="true">
         <div class="intro-page intro-page-left">
           <p class="intro-running">An independent newspaper</p>
@@ -79,7 +83,7 @@
           </p>
           <div class="intro-columns">
             <p>
-              <strong>HAMILTON —</strong> Every good story begins with a
+              <strong>HAMILTON.</strong> Every good story begins with a
               question. For Ahmed Ali, the next chapter might be a web
               application, a game, or a small detail that makes the whole thing
               work. He builds with Java and JavaScript, and brings ideas to life
@@ -174,6 +178,7 @@
       <p class="intro-bottom label">The front page is ready · Turn the page</p>
     </dialog>
 
+    <!-- Controls appear only after their JavaScript is ready; the links also work without it. -->
     <header class="site-header paper">
       <nav class="navigation page" aria-label="Main navigation">
         <a class="brand" href="#top" aria-label="Ahmed Ali, back to top"
@@ -216,6 +221,7 @@
     </header>
 
     <main id="main" tabindex="-1">
+      <!-- Front page: masthead, moving newswire, author introduction and story previews. -->
       <section class="hero page" aria-labelledby="page-title">
         <div class="edition-line label">
           <span>Vol. 01 / Edition № 07–597</span>
@@ -233,17 +239,20 @@
         <div class="newswire ink" aria-hidden="true">
           <span class="newswire-label">On the record</span>
           <div class="newswire-window">
+            <!-- Keep these copies identical: the animation travels exactly one group. -->
             <div class="newswire-track">
-              <span
-                >Full-stack development &nbsp; / &nbsp; Java &amp; JavaScript
-                &nbsp; / &nbsp; Unity &amp; Unreal &nbsp; / &nbsp; Open to
-                opportunities &nbsp; / &nbsp;</span
-              >
-              <span
-                >Full-stack development &nbsp; / &nbsp; Java &amp; JavaScript
-                &nbsp; / &nbsp; Unity &amp; Unreal &nbsp; / &nbsp; Open to
-                opportunities &nbsp; / &nbsp;</span
-              >
+              <div class="newswire-group">
+                <span>Full-stack development</span>
+                <span>Java &amp; JavaScript</span>
+                <span>Unity &amp; Unreal</span>
+                <span>Open to opportunities</span>
+              </div>
+              <div class="newswire-group">
+                <span>Full-stack development</span>
+                <span>Java &amp; JavaScript</span>
+                <span>Unity &amp; Unreal</span>
+                <span>Open to opportunities</span>
+              </div>
             </div>
           </div>
         </div>
@@ -253,6 +262,7 @@
             <p class="story-kicker label">
               The lead story / Software &amp; game development
             </p>
+            <!-- One stable description for screen readers, with rotating visual words beside it. -->
             <h2 class="role-heading" data-reveal>
               <span class="visually-hidden"
                 >Developer, detective, author, game developer and
@@ -266,11 +276,11 @@
                 <span class="role-word">Filmmaker</span>
               </span>
             </h2>
-            <p class="byline">By Ahmed Ali <span>— Hamilton, Ontario</span></p>
+            <p class="byline">By Ahmed Ali <span>· Hamilton, Ontario</span></p>
             <div class="hero-description">
               <p class="drop-cap">
                 I build full-stack applications and games. I like getting to the
-                bottom of a problem—and making something worth exploring.
+                bottom of a problem and making something worth exploring.
               </p>
               <div class="classified">
                 <p class="label">The opportunity column</p>
@@ -300,6 +310,7 @@
           </figure>
         </div>
 
+        <!-- Preview links open the matching project story further down the page. -->
         <div class="edition-stories" aria-label="Inside this edition">
           <a
             class="news-preview news-preview-text"
@@ -375,6 +386,7 @@
         </div>
       </section>
 
+      <!-- Each native details element is a story readers can open without JavaScript. -->
       <section class="work paper" id="games" aria-labelledby="work-title">
         <div class="page">
           <div class="section-meta label">
@@ -629,6 +641,7 @@
 
       <section class="profile paper" id="about" aria-labelledby="about-title">
         <h2 class="visually-hidden" id="about-title">The personal column</h2>
+        <!-- Repeated display type is decorative; the section already has an accessible heading. -->
         <div class="marquee" aria-hidden="true">
           <div class="marquee-track">
             <span>The personal column /&nbsp;</span
@@ -642,6 +655,7 @@
               A story to tell.<br /><em>A coffee to pour.</em>
             </h3>
             <p class="byline">From the personal pages of Ahmed Ali</p>
+            <!-- Each button controls only its own opening letter, spelling MYSTERY down the story. -->
             <blockquote class="mystery-quote" id="mystery-quote">
               <p>
                 <button
@@ -758,6 +772,7 @@
         </div>
       </section>
 
+      <!-- Three columns group languages, development tools and creative work. -->
       <section class="toolkit paper" id="skills" aria-labelledby="skills-title">
         <div class="page">
           <div class="section-meta label">
@@ -805,6 +820,7 @@
         </div>
       </section>
 
+      <!-- Direct links keep correspondence simple and need no form service. -->
       <section
         class="contact paper"
         id="contact"

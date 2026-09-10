@@ -1,4 +1,4 @@
-/* 1. Base */
+/* 1. Shared defaults, readable text and keyboard access. */
 *,
 *::before,
 *::after {
@@ -82,6 +82,7 @@ ul {
   text-transform: uppercase;
   letter-spacing: 0.025em;
 }
+/* Screen readers can read this text while its visual duplicate animates. */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -105,7 +106,7 @@ ul {
   transform: none;
 }
 
-/* 2. Navigation */
+/* 2. Sticky navigation and controls. Mobile open/closed rules are at the end. */
 .site-header {
   position: sticky;
   top: 0;
@@ -150,7 +151,8 @@ ul {
   margin-left: auto;
 }
 .motion-toggle,
-.menu-toggle {
+.menu-toggle,
+.theme-toggle {
   min-height: 44px;
   border: 0;
   padding: 0.25rem 0;
@@ -183,7 +185,9 @@ ul {
   gap: 1rem;
 }
 .edition-line {
-  padding-top: 1.25rem;
+  align-items: center;
+  padding-block: 1.25rem 0.65rem;
+  border-bottom: 3px double var(--text);
 }
 .masthead {
   display: flex;
@@ -205,18 +209,15 @@ ul {
   gap: 3vw;
   align-items: start;
 }
-.hero-copy h2 {
-  font-family: var(--font-display);
-  font-size: clamp(3.2rem, 6.8vw, 9rem);
-  line-height: 0.95;
-  letter-spacing: -0.055em;
-}
 .hero-copy .role-heading {
+  font-family: var(--font-display);
+  letter-spacing: -0.055em;
   font-size: clamp(2.5rem, 6.5vw, 8.8rem);
   line-height: 1.18;
   overflow: hidden;
   padding-block: 0.1em;
 }
+/* All roles share a grid cell, preventing the heading from moving the layout. */
 .role-words {
   display: grid;
   min-width: 0;
@@ -252,16 +253,22 @@ ul {
 .portrait {
   min-width: 0;
 }
+/* Motion sets these custom properties; defaults keep the portrait still without JS. */
 .portrait-image {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   background: var(--color-noir);
+  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transition: transform var(--duration-panel) var(--ease-out);
 }
 .portrait img {
   width: 100%;
   filter: grayscale(1) contrast(1.12);
+  transform: scale(1.08) translateY(var(--photo-drift, 0px));
 }
+/* Slanted bands supply the lead portrait's moving venetian-blind shadows. */
 .portrait-image::after {
   content: "";
   position: absolute;
@@ -347,6 +354,7 @@ ul {
 .case:last-child {
   border-bottom: 1px solid var(--text);
 }
+/* The native summary is a whole-row button with a number, headline and open symbol. */
 .case summary {
   display: grid;
   grid-template-columns: 3rem 1fr auto 3rem;
@@ -381,6 +389,7 @@ ul {
 .case[open] .case-symbol {
   transform: rotate(45deg);
 }
+/* Open stories pair their description with technical notes or a playable recording. */
 .case-body {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -420,6 +429,7 @@ ul {
 .text-link:hover span {
   transform: translate(3px, -3px);
 }
+/* Thin rules and aligned facts create the newspaper's technical column. */
 .technical-record {
   border-left: 1px solid var(--rule);
   padding-left: 2rem;
@@ -446,6 +456,7 @@ ul {
   margin-top: 1.25rem;
   color: var(--muted);
 }
+/* Videos keep their original proportions; captions and credits remain outside the player. */
 .demo {
   min-width: 0;
 }
@@ -472,6 +483,7 @@ ul {
   font-size: 0.85rem;
   padding-block: 0.75rem;
 }
+/* Compact technology labels wrap naturally when a story gets narrow. */
 .stack-list {
   display: flex;
   flex-wrap: wrap;
@@ -491,6 +503,7 @@ ul {
   padding-block: 2rem var(--section-space);
   overflow: hidden;
 }
+/* The personal-column heading uses the same two-copy loop as the newswire. */
 .marquee {
   display: flex;
   overflow: hidden;
@@ -513,7 +526,7 @@ ul {
   grid-template-columns: 1.15fr 1fr;
   gap: 8vw;
 }
-/* Independent story initials */
+/* Each MYSTERY initial responds independently to hover, keyboard focus or a pressed button. */
 .personal-headline {
   margin-top: 1.3rem;
   font: 400 clamp(2.8rem, 4.6vw, 5.5rem) / 0.95 var(--font-display);
@@ -561,6 +574,7 @@ ul {
   color: var(--muted);
   font-size: 0.65rem;
 }
+/* The biography sits beside the personal story, separated by a print-style rule. */
 .profile-copy {
   max-width: 45rem;
   border-left: 1px solid var(--rule);
@@ -587,6 +601,7 @@ ul {
   font: 400 clamp(3.5rem, 7vw, 9rem) / 1 var(--font-display);
   letter-spacing: -0.035em;
 }
+/* Three equal desktop columns become a single reading column on mobile. */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -614,7 +629,7 @@ ul {
   color: var(--muted);
 }
 
-/* 6. Contact and end of file */
+/* 6. Contact links and the final publication line. */
 .contact {
   padding-block: 2rem 5rem;
 }
@@ -676,11 +691,6 @@ ul {
 }
 
 /* Newspaper details: rules, columns, bylines and real project photographs. */
-.edition-line {
-  align-items: center;
-  padding-bottom: 0.65rem;
-  border-bottom: 3px double var(--text);
-}
 .edition-line > span {
   flex: 1;
 }
@@ -701,6 +711,7 @@ ul {
   border-top: 1px solid var(--text);
   border-bottom: 4px double var(--text);
 }
+/* The fixed label stays still while its neighboring window clips the moving text. */
 .newswire {
   display: flex;
   align-items: center;
@@ -717,16 +728,34 @@ ul {
   border-right: 1px solid var(--muted);
 }
 .newswire-window {
+  flex: 1;
   min-width: 0;
   overflow: hidden;
+  container-type: inline-size;
 }
 .newswire-track {
   display: flex;
   width: max-content;
 }
-.newswire-track > span {
+/* Each copy covers at least the window width, so the loop never exposes an empty tail.
+   100cqw measures this strip's container, not the whole browser window. */
+.newswire-group {
+  display: flex;
   flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1.5rem;
+  min-width: 100cqw;
   padding-left: 1.5rem;
+}
+.newswire-group > span {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.5rem;
+  white-space: nowrap;
+}
+.newswire-group > span::after {
+  content: "/";
 }
 .story-kicker {
   margin-bottom: 1rem;
@@ -740,6 +769,7 @@ ul {
 .byline span {
   color: var(--muted);
 }
+/* A floated first letter gives the opening paragraph its newspaper drop cap. */
 .drop-cap::first-letter {
   float: left;
   margin: 0.02em 0.1em 0 0;
@@ -763,14 +793,7 @@ ul {
   display: block;
   font-size: 0.62rem;
 }
-.portrait-image {
-  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg))
-    rotateY(var(--tilt-y, 0deg));
-  transition: transform var(--duration-panel) var(--ease-out);
-}
-.portrait img {
-  transform: scale(1.08) translateY(var(--photo-drift, 0px));
-}
+/* These preview columns link to the complete project stories below. */
 .edition-stories {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -846,6 +869,7 @@ ul {
 .scroll-cue {
   display: inline-block;
 }
+/* Two title copies slide within the clipped headline on hover or keyboard focus. */
 .case-title-track {
   display: block;
   transition: transform 420ms var(--ease-out);
@@ -861,6 +885,7 @@ ul {
 .case summary:focus-visible .case-title-track {
   transform: translateY(-50%);
 }
+/* Scroll progress scales this rule from the left without resizing the header. */
 .site-header::after {
   content: "";
   position: absolute;
@@ -872,7 +897,7 @@ ul {
   transform-origin: left;
 }
 
-/* Browsers with intrinsic-size transitions smoothly open and close each file. */
+/* Newer browsers animate a story's natural height; others keep native details behavior. */
 @supports (interpolate-size: allow-keywords) {
   .case {
     interpolate-size: allow-keywords;
@@ -890,14 +915,6 @@ ul {
 }
 
 /* Theme control */
-.theme-toggle {
-  min-height: 44px;
-  border: 0;
-  padding: 0.25rem 0;
-  background: none;
-  font: 400 0.7rem var(--font-label);
-  text-transform: uppercase;
-}
 .theme-toggle::before {
   content: "◐";
   display: inline-block;
@@ -909,7 +926,7 @@ ul {
   text-decoration: underline;
   text-underline-offset: 0.3em;
 }
-/* Responsive layout */
+/* Responsive layout, from wider screens to smaller ones. Later breakpoints refine earlier ones. */
 @media (min-width: 1900px) {
   .hero-description {
     margin-block: 3rem;
@@ -978,7 +995,7 @@ ul {
   }
 
   .hero-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.3fr 1fr;
     gap: 1rem;
   }
   .hero-copy .role-heading {
@@ -1060,37 +1077,7 @@ ul {
   .footer-row {
     font-size: 0.65rem;
   }
-}
-@media (max-width: 480px) {
-  .brand span {
-    display: none;
-  }
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-  .hero-copy .role-heading {
-    font-size: 12vw;
-  }
 
-  .portrait {
-    margin-top: 1rem;
-  }
-  .portrait-image {
-    aspect-ratio: 1.15;
-  }
-  .portrait img {
-    height: 100%;
-    object-fit: cover;
-    object-position: center 35%;
-  }
-  .edition-line span:last-child {
-    text-align: right;
-  }
-  .serif-heading {
-    font-size: 3rem;
-  }
-}
-@media (max-width: 760px) {
   .edition-name {
     display: none;
   }
@@ -1108,12 +1095,6 @@ ul {
   }
   .newswire-label {
     padding-inline: 0.65rem;
-  }
-  .hero-grid {
-    grid-template-columns: 1.3fr 1fr;
-  }
-  .hero-description {
-    grid-template-columns: 1fr;
   }
   .classified {
     text-align: left;
@@ -1161,11 +1142,40 @@ ul {
   .mystery-quote {
     font-size: 1.4rem;
   }
+
+  .theme-toggle {
+    font-size: 0.62rem;
+  }
+  .nav-controls {
+    gap: 0.8rem;
+  }
 }
 @media (max-width: 480px) {
+  .brand span {
+    display: none;
+  }
   .hero-grid {
     grid-template-columns: 1fr;
   }
+  .hero-copy .role-heading {
+    font-size: 12vw;
+  }
+
+  .portrait {
+    margin-top: 1rem;
+  }
+  .portrait-image {
+    aspect-ratio: 1.15;
+  }
+  .portrait img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+  .serif-heading {
+    font-size: 3rem;
+  }
+
   .hero-description {
     grid-template-columns: 1.3fr 1fr;
     gap: 1rem;
@@ -1178,14 +1188,6 @@ ul {
   }
 }
 
-@media (max-width: 760px) {
-  .theme-toggle {
-    font-size: 0.62rem;
-  }
-  .nav-controls {
-    gap: 0.8rem;
-  }
-}
 @media (max-width: 400px) {
   .navigation {
     column-gap: 0.5rem;
@@ -1204,6 +1206,7 @@ ul {
   }
 }
 
+/* The system preference also stops CSS motion before JavaScript has loaded. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1215,6 +1218,7 @@ ul {
     transition: none !important;
   }
 }
+/* Printed pages remove controls and decoration; projects.js opens every story for printing. */
 @media print {
   .site-header,
   .motion-toggle,

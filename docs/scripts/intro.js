@@ -1,10 +1,15 @@
-import { isMotionEnabled, startContentMotion } from "./motion.js";
+import {
+  isMotionEnabled,
+  startContentMotion,
+} from "./motion.js?v=20260909-newswire";
 
+// Manage the opening dialog, its timeout and replay without delaying the actual page load.
 export function initIntro() {
   const intro = document.querySelector(".intro");
   const replay = document.querySelector(".intro-replay");
   const skip = intro?.querySelector(".intro-skip");
 
+  // Unsupported dialogs should never prevent the portfolio content from becoming usable.
   if (!intro || !skip || typeof intro.showModal !== "function") {
     startContentMotion();
     return;
@@ -21,20 +26,24 @@ export function initIntro() {
       startContentMotion();
       return;
     }
+    // First arrival respects a project bookmark; replay remembers the reader's current position.
     previousScroll = firstOpening ? 0 : scrollY;
     initialAnchor = firstOpening
       ? document.getElementById(location.hash.slice(1))
       : null;
     firstOpening = false;
     intro.showModal();
+    // This includes the unfold animation and a short reading pause before revealing the page.
     timer = setTimeout(() => intro.close(), 4200);
   }
 
+  // A system preference change can happen while the dialog is already open.
   function syncMotion() {
     if (replay) replay.disabled = !isMotionEnabled();
     if (!isMotionEnabled() && intro.open) intro.close();
   }
 
+  // Skip, Escape and the timeout all use the same native close event for cleanup.
   skip.addEventListener("click", () => intro.close());
   intro.addEventListener("close", () => {
     clearTimeout(timer);
