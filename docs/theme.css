@@ -1,4 +1,4 @@
-/* Two flat print surfaces; extra-dark noir is reserved for the portrait/footer. */
+/* Components use these color roles so one theme change updates the whole page. */
 :root,
 .paper {
   color-scheme: light;
@@ -8,6 +8,7 @@
   --rule: var(--color-midstone);
 }
 
+/* Inverted ink panels give the newswire contrast against the paper. */
 .ink {
   color-scheme: dark;
   --surface: var(--color-headline-ink);
@@ -22,6 +23,7 @@
   background-color: var(--surface);
 }
 
+/* A shared grain texture adds print detail without another decorative element. */
 .paper {
   background-image: url("assets/img/paper-grain.svg");
 }

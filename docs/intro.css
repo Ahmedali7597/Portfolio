@@ -12,6 +12,7 @@
 .intro-replay:disabled {
   display: none;
 }
+/* Lock background scrolling only while the native dialog is open. */
 html:has(.intro[open]) {
   overflow: hidden;
 }
@@ -64,6 +65,7 @@ html:has(.intro[open]) {
   margin-top: 0.6rem;
   font: italic clamp(1.8rem, 4vw, 3rem) / 1 var(--font-display);
 }
+/* Two equal pages scale together; the height limit also fits short browser windows. */
 .intro-spread {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -89,6 +91,7 @@ html:has(.intro[open]) {
 .intro-page p + p {
   margin-top: 0;
 }
+/* Opposite transform origins make both pages unfold from the central crease. */
 .intro-page-left {
   transform-origin: right center;
 }
@@ -96,6 +99,7 @@ html:has(.intro[open]) {
   transform-origin: left center;
   border-left-color: #c9bfaa;
 }
+/* Small labels, dates and bylines use the same typewriter-like face. */
 .intro-running,
 .intro-dateline,
 .intro-byline,
@@ -132,6 +136,7 @@ html:has(.intro[open]) {
   border-bottom: 1px solid #a7a194;
   text-align: center;
 }
+/* Real text columns and thin vertical rules give the miniature its printed structure. */
 .intro-columns,
 .intro-feature,
 .intro-ad-pair {
@@ -180,6 +185,7 @@ html:has(.intro[open]) {
 .intro-notes strong {
   font-size: 1.2cqw;
 }
+/* Ads sit at the foot of each page, using Ahmed's projects as the advertised stories. */
 .intro-ad,
 .intro-ad-pair {
   margin-top: auto;
@@ -222,6 +228,7 @@ html:has(.intro[open]) {
   text-align: center;
   font-size: 0.65rem;
 }
+/* Arrival moves the whole spread; separate page rotations unfold it after it appears. */
 @keyframes edition-arrives {
   0% {
     transform: translateY(70vh) rotate(-18deg) scale(0.35);
@@ -274,6 +281,7 @@ html:has(.intro[open]) {
   animation: open-right 1100ms var(--ease-out) 650ms both;
 }
 
+/* A landscape phone puts the announcement beside the paper to keep both in view. */
 @media (max-height: 650px) and (min-width: 600px) {
   .intro[open] {
     display: grid;

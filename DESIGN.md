@@ -52,3 +52,31 @@ Opening-spread styles and shared motion rules have their own stylesheets; the ma
 stylesheet covers page layout and responsive rules. Browser storage failures leave
 the theme usable, missing controls are tolerated, and native project content stays
 readable if enhancements cannot load.
+
+## Finding your way through the code
+
+| File                         | What to edit here                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------ |
+| `docs/index.html`            | Page copy, project stories, links, the MYSTERY quote and the opening newspaper |
+| `docs/variables.css`         | Shared colors, font families, spacing and animation timings                    |
+| `docs/theme.css`             | Light and dark versions of the paper and ink surfaces                          |
+| `docs/styles.css`            | Page layout, component styling, responsive breakpoints and print rules         |
+| `docs/intro.css`             | The miniature newspaper, columns, advertisements and unfolding animation       |
+| `docs/motion.css`            | Continuous scrolling, small decorative animations and pause rules              |
+| `docs/script.js`             | Startup order, individual letter buttons and the footer year                   |
+| `docs/scripts/theme.js`      | Theme switching and remembering the visitor's choice                           |
+| `docs/scripts/navigation.js` | Mobile menu, keyboard focus and links to project stories                       |
+| `docs/scripts/projects.js`   | Video playback cleanup, error notices and printing open stories                |
+| `docs/scripts/motion.js`     | Rotating roles, scroll reveals, reading progress and portrait movement         |
+| `docs/scripts/intro.js`      | Opening, skipping, closing and replaying the introductory newspaper            |
+
+The newswire contains two identical groups. Each group is at least as wide as
+its visible window, with the short items spaced across it. The animation moves
+by one group, so the second copy meets the first at the loop boundary. Hover
+and the motion control pause its existing timeline instead of restarting it.
+Keep both groups identical when changing their text.
+
+`tokens.json` is the portable version of the design values. Update it alongside
+`variables.css` when changing a shared token. When changing module imports,
+use the same version suffix everywhere so the intro and entry point load one
+shared instance of the motion module.

@@ -1,5 +1,7 @@
+// One motion setting coordinates CSS loops, JavaScript reveals, portrait effects and the intro.
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const motionToggle = document.querySelector(".motion-toggle");
+// Track only unfinished reveal animations so Pause can cancel them without hiding content.
 const activeReveals = new Set();
 let motionPaused = false;
 let revealsStarted = false;
@@ -16,6 +18,7 @@ const roleDelay =
 let roleIndex = 0;
 let roleTimer;
 
+// Recreate one timer when visibility or motion changes; pause it while the tab is hidden.
 function syncRoleRotation() {
   clearInterval(roleTimer);
   if (!roleHeading || roleWords.length < 2) return;
@@ -26,6 +29,7 @@ function syncRoleRotation() {
   )
     return;
   roleTimer = setInterval(() => {
+    // Preserve the current word while this headline is outside the viewport.
     const bounds = roleHeading.getBoundingClientRect();
     if (bounds.bottom < 0 || bounds.top > innerHeight) return;
     roleWords.forEach((word) => word.classList.remove("is-outgoing"));
@@ -35,6 +39,7 @@ function syncRoleRotation() {
   }, roleDelay);
 }
 
+// The operating-system preference takes priority over the page's Pause/Resume control.
 function updateMotion() {
   const enabled = !reducedMotion.matches && !motionPaused;
   document.body.dataset.motion = enabled ? "on" : "off";
@@ -49,6 +54,7 @@ function updateMotion() {
   }
   if (!enabled) activeReveals.forEach((animation) => animation.cancel());
   syncRoleRotation();
+  // The intro and scroll effects subscribe to this event instead of sharing their own state.
   document.dispatchEvent(new Event("motionchange"));
 }
 
@@ -66,9 +72,11 @@ export function startContentMotion() {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
+          // Each item reveals once, including items reached while motion is paused.
           revealObserver.unobserve(entry.target);
           if (document.body.dataset.motion !== "on") return;
 
+          // Headline and project entrances differ slightly; all other elements rise into place.
           const kind = entry.target.dataset.reveal;
           const headline = kind === "headline";
           const animation = entry.target.animate(
@@ -103,6 +111,7 @@ export function startContentMotion() {
   }
 }
 
+// Reading progress is always available; photo drift and tilt run only when motion is enabled.
 function initScrollEffects() {
   const siteHeader = document.querySelector(".site-header");
   const portrait = document.querySelector(".portrait");
@@ -121,6 +130,7 @@ function initScrollEffects() {
       document.body.dataset.motion === "on" ? Math.min(scrollY * 0.035, 22) : 0;
     photo.style.setProperty("--photo-drift", drift + "px");
   }
+  // Scroll events can arrive faster than frames, so combine them into one visual update.
   function queueScrollEffects() {
     if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollEffects);
   }
@@ -150,10 +160,12 @@ function initScrollEffects() {
   });
 }
 
+// Shared with the intro, which must skip its opening when motion is disabled.
 export function isMotionEnabled() {
   return document.body.dataset.motion === "on";
 }
 
+// Connect the user control, system preference and tab visibility to the shared motion state.
 export function initMotion() {
   motionToggle?.addEventListener("click", () => {
     motionPaused = !motionPaused;
