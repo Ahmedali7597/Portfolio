@@ -8,3 +8,12 @@ Desktop.ini
 # Temporary tools and logs are not part of the published site.
 node_modules/
 *.log
+
+.vs/
+
+# Astro
+.astro/
+dist/
+
+# Local Claude Code preview config
+.claude/

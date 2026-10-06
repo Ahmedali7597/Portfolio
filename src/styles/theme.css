@@ -23,9 +23,14 @@
   background-color: var(--surface);
 }
 
-/* A shared grain texture adds print detail without another decorative element. */
-.paper {
-  background-image: url("assets/img/paper-grain.svg");
+/* One fixed grain layer gives every surface the same newsprint tooth without repainting on scroll. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: var(--layer-grain);
+  pointer-events: none;
+  background-image: url("../assets/paper-grain.svg");
 }
 
 /* Dark newsprint keeps the same ink, rule and typography roles. */

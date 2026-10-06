@@ -47,7 +47,14 @@ export function initNavigation() {
   // Preserve incoming project links by opening the story before the browser scrolls.
   function openStory(id) {
     const target = document.getElementById(id);
-    if (target?.matches("details.case")) target.open = true;
+    // Links can point at a story or at something inside one, such as the film's behind-the-scenes panel.
+    const story = target?.closest("details.case");
+    if (story && !story.open) {
+      // Skip the opening animation so the browser can scroll straight to a target inside the story.
+      story.classList.add("is-jumping");
+      story.open = true;
+      requestAnimationFrame(() => story.classList.remove("is-jumping"));
+    }
     return target;
   }
 

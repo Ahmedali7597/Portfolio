@@ -1,43 +1,10 @@
-// One motion setting coordinates CSS loops, JavaScript reveals, portrait effects and the intro.
+// One motion setting coordinates CSS loops, JavaScript reveals, portrait effects, the deck and the intro.
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const motionToggle = document.querySelector(".motion-toggle");
 // Track only unfinished reveal animations so Pause can cancel them without hiding content.
 const activeReveals = new Set();
 let motionPaused = false;
 let revealsStarted = false;
-
-// One role at a time, using a small CSS transition between printed headlines.
-const roleWords = [...document.querySelectorAll(".role-word")];
-const roleHeading = document.querySelector(".role-heading");
-const roleDelay =
-  Number.parseFloat(
-    getComputedStyle(document.documentElement).getPropertyValue(
-      "--duration-role-hold",
-    ),
-  ) || 3200;
-let roleIndex = 0;
-let roleTimer;
-
-// Recreate one timer when visibility or motion changes; pause it while the tab is hidden.
-function syncRoleRotation() {
-  clearInterval(roleTimer);
-  if (!roleHeading || roleWords.length < 2) return;
-  if (
-    !revealsStarted ||
-    document.hidden ||
-    document.body.dataset.motion !== "on"
-  )
-    return;
-  roleTimer = setInterval(() => {
-    // Preserve the current word while this headline is outside the viewport.
-    const bounds = roleHeading.getBoundingClientRect();
-    if (bounds.bottom < 0 || bounds.top > innerHeight) return;
-    roleWords.forEach((word) => word.classList.remove("is-outgoing"));
-    roleWords[roleIndex].classList.replace("is-current", "is-outgoing");
-    roleIndex = (roleIndex + 1) % roleWords.length;
-    roleWords[roleIndex].classList.add("is-current");
-  }, roleDelay);
-}
 
 // The operating-system preference takes priority over the page's Pause/Resume control.
 function updateMotion() {
@@ -53,7 +20,6 @@ function updateMotion() {
         : "Resume motion";
   }
   if (!enabled) activeReveals.forEach((animation) => animation.cancel());
-  syncRoleRotation();
   // The intro and scroll effects subscribe to this event instead of sharing their own state.
   document.dispatchEvent(new Event("motionchange"));
 }
@@ -62,7 +28,6 @@ function updateMotion() {
 export function startContentMotion() {
   if (revealsStarted) return;
   revealsStarted = true;
-  syncRoleRotation();
   if ("IntersectionObserver" in window && Element.prototype.animate) {
     const styles = getComputedStyle(document.documentElement);
     const duration =
@@ -174,7 +139,6 @@ export function initMotion() {
     updateMotion();
   });
   reducedMotion.addEventListener("change", updateMotion);
-  document.addEventListener("visibilitychange", syncRoleRotation);
   updateMotion();
   if (motionToggle) motionToggle.hidden = false;
   initScrollEffects();

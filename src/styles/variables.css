@@ -18,7 +18,7 @@
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-label: "Courier New", monospace;
+  --font-label: "Courier Prime", "Courier New", monospace;
   /* Clamp lets spacing grow with the window without becoming too small or too wide. */
   --page-gutter: clamp(1rem, 2vw, 2.5rem);
   --section-space: clamp(4rem, 9vw, 9rem);
@@ -27,10 +27,13 @@
   /* Short transitions use milliseconds; the continuous ticker uses seconds. */
   --duration-fast: 140ms;
   --duration-panel: 240ms;
-  --duration-role: 380ms;
-  --duration-role-hold: 3200ms;
   --duration-reveal: 850ms;
   --duration-marquee: 24s;
   --duration-shadows: 6s;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Stacking layers, lowest first. */
+  --layer-header: 20;
+  --layer-grain: 30;
+  --layer-skip: 100;
 }

@@ -1,0 +1,93 @@
+---
+// Page shell: meta tags, structured data, self-hosted fonts, styles and the single script entry.
+// Fonts are bundled from Fontsource, so the page makes no requests to Google.
+import "@fontsource/unifrakturmaguntia/400.css";
+import "@fontsource/anton/400.css";
+import "@fontsource/cormorant-garamond/400.css";
+import "@fontsource/cormorant-garamond/400-italic.css";
+import "@fontsource/cormorant-garamond/600.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/courier-prime/400.css";
+// Tokens and colours first, layout next, motion overrides last.
+import "../styles/variables.css";
+import "../styles/theme.css";
+import "../styles/styles.css";
+import "../styles/intro.css";
+import "../styles/deck.css";
+import "../styles/motion.css";
+
+const title = "Ahmed Ali | Software Developer & Game Maker";
+const description =
+  "Ahmed Ali's personal edition. Full-stack applications, Unity games and the stories behind the code. Based in Hamilton, Ontario.";
+const url = new URL(import.meta.env.BASE_URL, Astro.site).href;
+const portrait = new URL("assets/img/profile-noir.jpg", url).href;
+
+// Structured data helps search engines connect this page to Ahmed's other profiles.
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ahmed Ali",
+  url,
+  image: portrait,
+  jobTitle: "Software Developer",
+  address: { "@type": "PostalAddress", addressLocality: "Hamilton", addressRegion: "ON", addressCountry: "CA" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Mohawk College" },
+  knowsAbout: ["Java", "JavaScript", "Node.js", "PostgreSQL", "Unity", "C#", "Blender", "Video editing"],
+  sameAs: [
+    "https://github.com/Ahmedali7597",
+    "https://www.linkedin.com/in/ahmed-ali-229b89229/",
+    "https://x.com/Ahmed_Ali7597",
+    "https://www.instagram.com/ahmed_ali_6361/",
+    "https://taptotrade.ca",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Ahmed Ali" />
+    <meta name="theme-color" content="#f0ece3" />
+    <!-- Link previews use the same title, description and portrait as the page. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Full-stack applications, Unity games and the stories behind the code. Explore Ahmed Ali's personal edition."
+    />
+    <meta property="og:image" content={portrait} />
+    <!-- The share image is square, so use the square card instead of the wide one. -->
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href={url} />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23f0ece3'/%3E%3Cpath transform='translate(14 12) scale(.72)' d='M50 2C38 20 8 38 8 62c0 15 13 25 27 22 6-1 10-5 12-9-1 10-6 18-14 23h34c-8-5-13-13-14-23 2 4 6 8 12 9 14 3 27-7 27-22C92 38 62 20 50 2Z'/%3E%3C/svg%3E"
+    />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
+    <link rel="preload" href="assets/img/profile-noir.jpg" as="image" />
+    <script is:inline>
+      // Apply a saved theme before the styles paint the page.
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch {
+        // Light mode remains available when browser storage is blocked.
+      }
+    </script>
+  </head>
+  <body class="paper" id="top" data-motion="off">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <script>
+      import "../scripts/main.js";
+    </script>
+  </body>
+</html>

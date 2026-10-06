@@ -27,7 +27,7 @@ html:has(.intro[open]) {
   overflow: hidden;
   color: var(--text);
   background: var(--surface);
-  background-image: url("assets/img/paper-grain.svg");
+  background-image: url("../assets/paper-grain.svg");
 }
 .intro[open] {
   display: flex;
@@ -83,7 +83,7 @@ html:has(.intro[open]) {
   padding: 1.6cqw;
   border: 1px solid #a7a194;
   color: #2a2722;
-  background: #eee7d7 url("assets/img/paper-grain.svg");
+  background: #eee7d7 url("../assets/paper-grain.svg");
   backface-visibility: hidden;
   box-shadow: 0 18px 40px rgb(0 0 0 / 0.18);
   font: 400 1.48cqw / 1.25 var(--font-display);

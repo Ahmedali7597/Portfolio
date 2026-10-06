@@ -29,12 +29,10 @@
   }
 }
 /* Keep the animation attached while paused so hover and Resume keep its position. */
-.newswire-track,
-.marquee-track {
+.newswire-track {
   animation: marquee var(--duration-marquee) linear infinite paused;
 }
-[data-motion="on"] .newswire-track,
-[data-motion="on"] .marquee-track {
+[data-motion="on"] .newswire-track {
   animation-play-state: running;
 }
 /* Portrait shadows, opened stories and the reading cue follow the same motion setting. */
@@ -49,8 +47,7 @@
   animation: scroll-nudge 1.8s ease-in-out infinite;
 }
 /* Pausing the full strip lets readers stop anywhere over it to read. */
-.newswire:hover .newswire-track,
-.marquee:hover .marquee-track {
+.newswire:hover .newswire-track {
   animation-play-state: paused;
 }
 /* Remove pointer tilt and optional transitions when the visitor pauses motion. */

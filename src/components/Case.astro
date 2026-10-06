@@ -1,0 +1,26 @@
+---
+// One project story: a native <details> readers can open without JavaScript.
+// The title is printed twice so it can slide to its italic copy on hover.
+interface Props {
+  id: string;
+  number: string;
+  title: string;
+  category: string;
+  open?: boolean;
+}
+const { id, number, title, category, open = false } = Astro.props;
+---
+
+<details class="case" id={id} open={open}>
+  <summary data-reveal="case">
+    <span class="case-number label">{number}</span>
+    <h3>
+      <span class="case-title-track"><span>{title}</span><span aria-hidden="true">{title}</span></span>
+    </h3>
+    <span class="case-category label">{category}</span>
+    <span class="case-symbol" aria-hidden="true">+</span>
+  </summary>
+  <div class="case-body">
+    <slot />
+  </div>
+</details>

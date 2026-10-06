@@ -1,0 +1,31 @@
+---
+// The whole portfolio is one newspaper page; each section is its own component.
+import Base from "../layouts/Base.astro";
+import Intro from "../components/Intro.astro";
+import Header from "../components/Header.astro";
+import Masthead from "../components/Masthead.astro";
+import Deck from "../components/Deck.astro";
+import Lead from "../components/Lead.astro";
+import DeskNote from "../components/DeskNote.astro";
+import Stories from "../components/Stories.astro";
+import Profile from "../components/Profile.astro";
+import Toolkit from "../components/Toolkit.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base>
+  <Intro />
+  <Header />
+  <main id="main" tabindex="-1">
+    <Masthead />
+    <Deck />
+    <Lead />
+    <DeskNote />
+    <Stories />
+    <Profile />
+    <Toolkit />
+    <Contact />
+  </main>
+  <Footer />
+</Base>

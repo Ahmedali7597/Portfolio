@@ -7,6 +7,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  scrollbar-color: var(--muted) var(--surface);
+  accent-color: var(--text);
+  caret-color: var(--text);
 }
 body {
   margin: 0;
@@ -96,7 +99,7 @@ ul {
   position: fixed;
   top: 1rem;
   left: 1rem;
-  z-index: 100;
+  z-index: var(--layer-skip);
   padding: 1rem;
   background: var(--color-paper);
   color: var(--color-headline-ink);
@@ -110,7 +113,7 @@ ul {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: var(--layer-header);
   border-bottom: 1px solid var(--text);
 }
 .navigation {
@@ -216,28 +219,6 @@ ul {
   line-height: 1.18;
   overflow: hidden;
   padding-block: 0.1em;
-}
-/* All roles share a grid cell, preventing the heading from moving the layout. */
-.role-words {
-  display: grid;
-  min-width: 0;
-}
-.role-word {
-  grid-area: 1 / 1;
-  min-width: 0;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(120%);
-  transition:
-    transform var(--duration-role) var(--ease-out),
-    opacity var(--duration-role) var(--ease-out);
-}
-.role-word.is-current {
-  opacity: 1;
-  transform: translateY(0);
-}
-.role-word.is-outgoing {
-  transform: translateY(-120%);
 }
 .hero-description {
   display: grid;
@@ -484,6 +465,65 @@ ul {
   font-size: 0.85rem;
   padding-block: 0.75rem;
 }
+/* Behind the scenes: one film frame, switched between Blender's three views. */
+.bts {
+  grid-column: 1 / -1;
+  scroll-margin-top: 5rem;
+}
+.bts-switch {
+  display: inline-flex;
+  margin: 0.8rem 0;
+  padding: 0;
+  border: 1px solid var(--text);
+}
+.bts-switch label {
+  position: relative;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font: 400 var(--text-caption) / 1 var(--font-label);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+.bts-switch label + label {
+  border-left: 1px solid var(--text);
+}
+/* The real radio stays focusable for keyboards; its label shows the state. */
+.bts-switch input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.bts-switch label:has(:checked) {
+  color: var(--surface);
+  background: var(--text);
+}
+.bts-switch label:has(:focus-visible) {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+.bts-frame {
+  display: grid;
+  border: 1px solid var(--rule);
+  background: var(--color-noir);
+}
+.bts-frame img {
+  grid-area: 1 / 1;
+  width: 100%;
+  opacity: 0;
+  transition: opacity var(--duration-panel) var(--ease-out);
+}
+.bts:has([value="wireframe"]:checked) .bts-wireframe,
+.bts:has([value="solid"]:checked) .bts-solid,
+.bts:has([value="render"]:checked) .bts-render {
+  opacity: 1;
+}
 /* Compact technology labels wrap naturally when a story gets narrow. */
 .stack-list {
   display: flex;
@@ -504,23 +544,11 @@ ul {
   padding-block: 2rem var(--section-space);
   overflow: hidden;
 }
-/* The personal-column heading uses the same two-copy loop as the newswire. */
-.marquee {
-  display: flex;
-  overflow: hidden;
+.column-title {
   margin-bottom: clamp(2rem, 5vw, 5rem);
-}
-.marquee-track {
-  display: flex;
-  flex-shrink: 0;
-  width: max-content;
-  font: 400 clamp(5rem, 14vw, 20rem) / 1.2 var(--font-masthead);
-  letter-spacing: -0.025em;
+  font: 400 clamp(3.2rem, 11.5vw, 16rem) / 1 var(--font-masthead);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-}
-.marquee-track span {
-  display: block;
-  flex-shrink: 0;
 }
 .profile-grid {
   display: grid;
@@ -913,6 +941,9 @@ ul {
   .case[open]::details-content {
     block-size: auto;
   }
+  .case.is-jumping::details-content {
+    transition: none;
+  }
 }
 
 /* Theme control */
@@ -1058,6 +1089,9 @@ ul {
   .technical-record {
     border-left: 0;
     padding-left: 0;
+  }
+  .bts-switch label {
+    padding: 0 0.7rem;
   }
   .project-deck {
     font-size: 2.3rem;
@@ -1257,12 +1291,13 @@ ul {
     opacity: 1 !important;
     transform: none !important;
   }
+  body::after,
   .intro,
   .intro-replay,
+  .deck,
   .site-header,
   .skip-link,
   .newswire,
-  .marquee,
   .file-stamp,
   .case-symbol,
   .case-title-track > span:last-child {
@@ -1280,14 +1315,6 @@ ul {
   .contact-grid,
   .case-body {
     grid-template-columns: 1fr;
-  }
-  .role-word {
-    display: none;
-  }
-  .role-word:first-child {
-    display: block;
-    opacity: 1;
-    transform: none;
   }
   .portrait {
     max-width: 220px;
@@ -1319,5 +1346,14 @@ ul {
   }
   video {
     max-height: 200px;
+  }
+  .bts-switch {
+    display: none;
+  }
+  .bts-frame {
+    display: block;
+  }
+  .bts-frame img {
+    opacity: 1 !important;
   }
 }

@@ -1,7 +1,7 @@
 import {
   isMotionEnabled,
   startContentMotion,
-} from "./motion.js?v=20260910-review";
+} from "./motion.js";
 
 // Manage the opening dialog, its timeout and replay without delaying the actual page load.
 export function initIntro() {
@@ -58,5 +58,16 @@ export function initIntro() {
   if (replay) replay.hidden = false;
   document.addEventListener("motionchange", syncMotion);
   syncMotion();
-  showIntro();
+  // Play the opening once per visit; reloads and returns skip straight to the page. Replay still works.
+  let seen = false;
+  try {
+    seen = sessionStorage.getItem("intro-seen") === "1";
+    sessionStorage.setItem("intro-seen", "1");
+  } catch {
+    // Without storage the opening simply plays each time, as before.
+  }
+  if (seen) {
+    firstOpening = false;
+    startContentMotion();
+  } else showIntro();
 }

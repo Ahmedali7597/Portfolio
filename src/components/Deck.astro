@@ -1,0 +1,69 @@
+---
+// The Jack of Spades hero. Cards are rendered here from src/data/skills.ts, so the page
+// works without JavaScript; scripts/deck.js only moves them.
+import { skills } from "../data/skills";
+
+const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+// Pips frame the description: half along the top edge, the rest upside down along the bottom.
+const pipRows = (rank: number) => [Math.ceil(rank / 2), Math.floor(rank / 2)];
+---
+
+<section class="deck" aria-labelledby="deck-title">
+  <!-- One spade shape, reused by every pip and corner index. -->
+  <svg width="0" height="0" class="sprite" aria-hidden="true">
+    <symbol id="spade" viewBox="0 0 100 100">
+      <path
+        d="M50 2C38 20 8 38 8 62c0 15 13 25 27 22 6-1 10-5 12-9-1 10-6 18-14 23h34c-8-5-13-13-14-23 2 4 6 8 12 9 14 3 27-7 27-22C92 38 62 20 50 2Z"
+      ></path>
+    </symbol>
+  </svg>
+  <div class="deck-stage page">
+    <h2 class="visually-hidden" id="deck-title">Jack of all trades</h2>
+    <blockquote class="deck-quote">
+      <p>
+        A jack of all trades is a master of none,{" "}
+        <em>but oftentimes better than a master of one.</em>
+      </p>
+    </blockquote>
+    <div class="deck-table">
+      <div class="jack">
+        <div class="jack-face">
+          <img src="assets/img/jack-of-spades.svg" alt="The Jack of Spades" width="360" height="540" fetchpriority="high" />
+        </div>
+        <div class="jack-face jack-rear" aria-hidden="true">
+          <img src="assets/img/jack-of-spades.svg" alt="" width="360" height="540" />
+        </div>
+      </div>
+      <ol class="hand" aria-label={`${skills.length} trades`}>
+        {
+          skills.map((skill, i) => {
+            const rank = ranks[i] ?? String(i + 1);
+            const [top, bottom] = pipRows(i + 1);
+            return (
+              <li class="skill">
+                <a class="card" href={skill.href}>
+                  {["", " index-end"].map((end) => (
+                    <span class={`index${end}`} aria-hidden="true">
+                      {rank}
+                      <svg class="suit"><use href="#spade" /></svg>
+                    </span>
+                  ))}
+                  <div class="face">
+                    <div class="pip-row" aria-hidden="true">
+                      {Array.from({ length: top }, () => <svg class="pip"><use href="#spade" /></svg>)}
+                    </div>
+                    <h3>{skill.name}</h3>
+                    <p>{skill.description}</p>
+                    <div class="pip-row flip" aria-hidden="true">
+                      {Array.from({ length: bottom }, () => <svg class="pip"><use href="#spade" /></svg>)}
+                    </div>
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </div>
+  </div>
+</section>

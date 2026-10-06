@@ -1,15 +1,17 @@
 // Entry point: each module owns one part of the page and its event listeners.
-import { initTheme } from "./scripts/theme.js?v=20260910-review";
-import { initNavigation } from "./scripts/navigation.js?v=20260910-review";
-import { initProjects } from "./scripts/projects.js?v=20260910-review";
-import { initMotion } from "./scripts/motion.js?v=20260910-review";
-import { initIntro } from "./scripts/intro.js?v=20260910-review";
+import { initTheme } from "./theme.js";
+import { initNavigation } from "./navigation.js";
+import { initProjects } from "./projects.js";
+import { initMotion } from "./motion.js";
+import { initIntro } from "./intro.js";
+import { initDeck } from "./deck.js";
 
 initTheme();
 initNavigation();
 initProjects();
 // Set the motion preference before the intro decides whether it should play.
 initMotion();
+initDeck();
 initIntro();
 
 // Native buttons support mouse, touch and keyboard; each remembers only its own letter.
