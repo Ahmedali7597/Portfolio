@@ -7,10 +7,9 @@ import {
 export function initIntro() {
   const intro = document.querySelector(".intro");
   const replay = document.querySelector(".intro-replay");
-  const skip = intro?.querySelector(".intro-skip");
 
   // A page without the opening still starts its scroll reveals.
-  if (!intro || !skip) {
+  if (!intro) {
     startContentMotion();
     return;
   }
@@ -43,8 +42,16 @@ export function initIntro() {
     if (!isMotionEnabled() && intro.open) intro.close();
   }
 
-  // Skip, Escape and the timeout all use the same native close event for cleanup.
-  skip.addEventListener("click", () => intro.close());
+  // Any click, tap, scroll, swipe or key turns the page early, so the opening never gets in the way.
+  // The Skip button sits inside the dialog, so its click is handled here too.
+  const dismiss = () => intro.open && intro.close();
+  intro.addEventListener("click", dismiss);
+  intro.addEventListener("wheel", dismiss, { passive: true });
+  intro.addEventListener("touchmove", dismiss, { passive: true });
+  intro.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") dismiss();
+  });
+  // Every way out (Skip, Escape, any input or the timeout) ends in the same native close event.
   intro.addEventListener("close", () => {
     clearTimeout(timer);
     requestAnimationFrame(() => {
@@ -58,16 +65,5 @@ export function initIntro() {
   if (replay) replay.hidden = false;
   document.addEventListener("motionchange", syncMotion);
   syncMotion();
-  // Play the opening once per visit; reloads and returns skip straight to the page. Replay still works.
-  let seen = false;
-  try {
-    seen = sessionStorage.getItem("intro-seen") === "1";
-    sessionStorage.setItem("intro-seen", "1");
-  } catch {
-    // Without storage the opening simply plays each time, as before.
-  }
-  if (seen) {
-    firstOpening = false;
-    startContentMotion();
-  } else showIntro();
+  showIntro();
 }

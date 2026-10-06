@@ -28,6 +28,21 @@ html:has(.intro[open]) {
   color: var(--text);
   background: var(--surface);
   background-image: url("../assets/paper-grain.svg");
+  /* Fade in over the page, and fade out to reveal it. `overlay` and `display` keep the dialog
+     on screen until the fade ends; browsers without this support simply open and close it. */
+  opacity: 0;
+  transition:
+    opacity 450ms var(--ease-out),
+    overlay 450ms allow-discrete,
+    display 450ms allow-discrete;
+}
+.intro[open] {
+  opacity: 1;
+}
+@starting-style {
+  .intro[open] {
+    opacity: 0;
+  }
 }
 .intro[open] {
   display: flex;
@@ -37,7 +52,7 @@ html:has(.intro[open]) {
   gap: clamp(1rem, 2.5vh, 2rem);
 }
 .intro::backdrop {
-  background: var(--color-noir);
+  background: transparent;
 }
 .intro-skip {
   position: absolute;
