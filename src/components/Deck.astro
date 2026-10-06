@@ -4,12 +4,10 @@
 import { skills } from "../data/skills";
 
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-// Pips frame the description: half along the top edge, the rest upside down along the bottom.
-const pipRows = (rank: number) => [Math.ceil(rank / 2), Math.floor(rank / 2)];
 ---
 
 <section class="deck" aria-labelledby="deck-title">
-  <!-- One spade shape, reused by every pip and corner index. -->
+  <!-- One spade shape, reused by every corner index. -->
   <svg width="0" height="0" class="sprite" aria-hidden="true">
     <symbol id="spade" viewBox="0 0 100 100">
       <path
@@ -38,7 +36,6 @@ const pipRows = (rank: number) => [Math.ceil(rank / 2), Math.floor(rank / 2)];
         {
           skills.map((skill, i) => {
             const rank = ranks[i] ?? String(i + 1);
-            const [top, bottom] = pipRows(i + 1);
             return (
               <li class="skill">
                 <a class="card" href={skill.href}>
@@ -49,14 +46,8 @@ const pipRows = (rank: number) => [Math.ceil(rank / 2), Math.floor(rank / 2)];
                     </span>
                   ))}
                   <div class="face">
-                    <div class="pip-row" aria-hidden="true">
-                      {Array.from({ length: top }, () => <svg class="pip"><use href="#spade" /></svg>)}
-                    </div>
                     <h3>{skill.name}</h3>
                     <p>{skill.description}</p>
-                    <div class="pip-row flip" aria-hidden="true">
-                      {Array.from({ length: bottom }, () => <svg class="pip"><use href="#spade" /></svg>)}
-                    </div>
                   </div>
                 </a>
               </li>

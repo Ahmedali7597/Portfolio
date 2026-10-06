@@ -9,8 +9,8 @@ export function initIntro() {
   const replay = document.querySelector(".intro-replay");
   const skip = intro?.querySelector(".intro-skip");
 
-  // Unsupported dialogs should never prevent the portfolio content from becoming usable.
-  if (!intro || !skip || typeof intro.showModal !== "function") {
+  // A page without the opening still starts its scroll reveals.
+  if (!intro || !skip) {
     startContentMotion();
     return;
   }

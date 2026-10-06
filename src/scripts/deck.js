@@ -3,15 +3,14 @@
 // The cards themselves come from src/data/skills.ts; this file only moves them.
 
 // Scroll milestones, as fractions of the pinned distance.
-const SPIN = [0.04, 0.4]; // the Jack turns once (storyboard frames 2–4)
+const SPIN = [0.04, 0.4]; // the Jack turns once (storyboard frames 2-4)
 const DEAL = [0.42, 0.8]; // the skills slide out of the Jack to their place on the ring
 const ORBIT_SECONDS = 40; // one lap of the ring once everything is dealt
+const ROUNDNESS = 1.1; // the ring stays within 10% of a perfect circle, whatever the stage's shape
 
 const clamp = (v) => Math.min(1, Math.max(0, v));
 // A point on the ring, clockwise from twelve o'clock.
 const ring = (a) => [Math.sin(a), -Math.cos(a)];
-// The ring is kept within 10% of a perfect circle, whatever the stage's shape.
-const ROUNDNESS = 1.1;
 const range = (p, [a, b]) => clamp((p - a) / (b - a));
 const smooth = (t) => t * t * (3 - 2 * t);
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -122,8 +121,8 @@ export function initDeck() {
       cards.forEach((card, i) => {
         if (card.matches(":hover, :focus-within")) lag[i] -= step;
         else if (lag[i]) {
-          // Return the short way round, then settle smoothly into the slot.
-          lag[i] = ((((lag[i] + Math.PI) % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI)) - Math.PI;
+          // Return the short way round (wrap the angle into -π..π), then settle smoothly into the slot.
+          lag[i] = Math.atan2(Math.sin(lag[i]), Math.cos(lag[i]));
           lag[i] = Math.abs(lag[i]) < 0.001 ? 0 : lag[i] * Math.exp(-dt * 2.5);
         }
       });

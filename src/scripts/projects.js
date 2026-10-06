@@ -31,14 +31,12 @@ export function initProjects() {
     }),
   );
   // Pause recordings after scrolling away or switching tabs; never auto-play on return.
-  if ("IntersectionObserver" in window) {
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) entry.target.pause();
-      });
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) entry.target.pause();
     });
-    videos.forEach((video) => videoObserver.observe(video));
-  }
+  });
+  videos.forEach((video) => videoObserver.observe(video));
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) videos.forEach((video) => video.pause());
   });

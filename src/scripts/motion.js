@@ -28,52 +28,50 @@ function updateMotion() {
 export function startContentMotion() {
   if (revealsStarted) return;
   revealsStarted = true;
-  if ("IntersectionObserver" in window && Element.prototype.animate) {
-    const styles = getComputedStyle(document.documentElement);
-    const duration =
-      Number.parseFloat(styles.getPropertyValue("--duration-reveal")) || 850;
-    const easing = styles.getPropertyValue("--ease-out").trim() || "ease-out";
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          // Each item reveals once, including items reached while motion is paused.
-          revealObserver.unobserve(entry.target);
-          if (document.body.dataset.motion !== "on") return;
+  const styles = getComputedStyle(document.documentElement);
+  const duration =
+    Number.parseFloat(styles.getPropertyValue("--duration-reveal")) || 850;
+  const easing = styles.getPropertyValue("--ease-out").trim() || "ease-out";
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        // Each item reveals once, including items reached while motion is paused.
+        revealObserver.unobserve(entry.target);
+        if (document.body.dataset.motion !== "on") return;
 
-          // Headline and project entrances differ slightly; all other elements rise into place.
-          const kind = entry.target.dataset.reveal;
-          const headline = kind === "headline";
-          const animation = entry.target.animate(
-            [
-              {
-                opacity: 0,
-                transform: headline
-                  ? "translateY(90%) rotate(3deg)"
-                  : kind === "case"
-                    ? "translateX(-30px)"
-                    : "translateY(36px)",
-              },
-              { opacity: 1, transform: "translateY(0) rotate(0)" },
-            ],
+        // Headline and project entrances differ slightly; all other elements rise into place.
+        const kind = entry.target.dataset.reveal;
+        const headline = kind === "headline";
+        const animation = entry.target.animate(
+          [
             {
-              duration,
-              easing,
-              delay: Number(entry.target.dataset.delay || 0),
-              fill: "backwards",
+              opacity: 0,
+              transform: headline
+                ? "translateY(90%) rotate(3deg)"
+                : kind === "case"
+                  ? "translateX(-30px)"
+                  : "translateY(36px)",
             },
-          );
-          activeReveals.add(animation);
-          animation.onfinish = animation.oncancel = () =>
-            activeReveals.delete(animation);
-        });
-      },
-      { threshold: 0.12 },
-    );
-    document
-      .querySelectorAll("[data-reveal]")
-      .forEach((item) => revealObserver.observe(item));
-  }
+            { opacity: 1, transform: "translateY(0) rotate(0)" },
+          ],
+          {
+            duration,
+            easing,
+            delay: Number(entry.target.dataset.delay || 0),
+            fill: "backwards",
+          },
+        );
+        activeReveals.add(animation);
+        animation.onfinish = animation.oncancel = () =>
+          activeReveals.delete(animation);
+      });
+    },
+    { threshold: 0.12 },
+  );
+  document
+    .querySelectorAll("[data-reveal]")
+    .forEach((item) => revealObserver.observe(item));
 }
 
 // Reading progress is always available; photo drift and tilt run only when motion is enabled.
